@@ -1,0 +1,2673 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api-documentation for
+    <a
+
+        href="https://github.com/paulmillr/chokidar"
+
+    >chokidar (v1.6.1)</a>
+</h1>
+<h4>A neat wrapper around node.js fs.watch / fs.watchFile / fsevents.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar">module chokidar</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher">
+            function <span class="apidocSignatureSpan">chokidar.</span>FSWatcher
+            <span class="apidocSignatureSpan">(_opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.fsevents_handler">
+            function <span class="apidocSignatureSpan">chokidar.</span>fsevents_handler
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler">
+            function <span class="apidocSignatureSpan">chokidar.</span>nodefs_handler
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.watch">
+            function <span class="apidocSignatureSpan">chokidar.</span>watch
+            <span class="apidocSignatureSpan">(paths, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chokidar.</span>FSWatcher.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chokidar.</span>fsevents_handler.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chokidar.</span>nodefs_handler.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar.FSWatcher">module chokidar.FSWatcher</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.FSWatcher">
+            function <span class="apidocSignatureSpan">chokidar.</span>FSWatcher
+            <span class="apidocSignatureSpan">(_opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.super_">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar.FSWatcher.prototype">module chokidar.FSWatcher.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._addToNodeFs">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_addToNodeFs
+            <span class="apidocSignatureSpan">(path, initialAdd, priorWh, depth, target, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._awaitWriteFinish">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_awaitWriteFinish
+            <span class="apidocSignatureSpan">(path, threshold, event, awfEmit)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._closePath">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_closePath
+            <span class="apidocSignatureSpan">(path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._emit">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_emit
+            <span class="apidocSignatureSpan">(event, path, val1, val2, val3)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._getWatchHelpers">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_getWatchHelpers
+            <span class="apidocSignatureSpan">(path, depth)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._getWatchedDir">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_getWatchedDir
+            <span class="apidocSignatureSpan">(directory)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._handleDir">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleDir
+            <span class="apidocSignatureSpan">(dir, stats, initialAdd, depth, target, wh, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._handleError">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleError
+            <span class="apidocSignatureSpan">(error)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._handleFile">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleFile
+            <span class="apidocSignatureSpan">(file, stats, initialAdd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._handleSymlink">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleSymlink
+            <span class="apidocSignatureSpan">(entry, directory, path, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._hasReadPermissions">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_hasReadPermissions
+            <span class="apidocSignatureSpan">(stats)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._isIgnored">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_isIgnored
+            <span class="apidocSignatureSpan">(path, stats)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._remove">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_remove
+            <span class="apidocSignatureSpan">(directory, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._throttle">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_throttle
+            <span class="apidocSignatureSpan">(action, path, timeout)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype._watchWithNodeFs">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_watchWithNodeFs
+            <span class="apidocSignatureSpan">(path, listener)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype.add">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>add
+            <span class="apidocSignatureSpan">(paths, _origAdd, _internal)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype.close">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>close
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype.getWatched">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>getWatched
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.FSWatcher.prototype.unwatch">
+            function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>unwatch
+            <span class="apidocSignatureSpan">(paths)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar.fsevents_handler">module chokidar.fsevents_handler</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.fsevents_handler.fsevents_handler">
+            function <span class="apidocSignatureSpan">chokidar.</span>fsevents_handler
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.fsevents_handler.canUse">
+            function <span class="apidocSignatureSpan">chokidar.fsevents_handler.</span>canUse
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar.fsevents_handler.prototype">module chokidar.fsevents_handler.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.fsevents_handler.prototype._addToFsEvents">
+            function <span class="apidocSignatureSpan">chokidar.fsevents_handler.prototype.</span>_addToFsEvents
+            <span class="apidocSignatureSpan">(path, transform, forceAdd, priorDepth)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.fsevents_handler.prototype._handleFsEventsSymlink">
+            function <span class="apidocSignatureSpan">chokidar.fsevents_handler.prototype.</span>_handleFsEventsSymlink
+            <span class="apidocSignatureSpan">(linkPath, fullPath, transform, curDepth)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.fsevents_handler.prototype._watchWithFsEvents">
+            function <span class="apidocSignatureSpan">chokidar.fsevents_handler.prototype.</span>_watchWithFsEvents
+            <span class="apidocSignatureSpan">(watchPath, realPath, transform, globFilter)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar.nodefs_handler">module chokidar.nodefs_handler</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler.nodefs_handler">
+            function <span class="apidocSignatureSpan">chokidar.</span>nodefs_handler
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.chokidar.nodefs_handler.prototype">module chokidar.nodefs_handler.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler.prototype._addToNodeFs">
+            function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_addToNodeFs
+            <span class="apidocSignatureSpan">(path, initialAdd, priorWh, depth, target, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler.prototype._handleDir">
+            function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_handleDir
+            <span class="apidocSignatureSpan">(dir, stats, initialAdd, depth, target, wh, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler.prototype._handleFile">
+            function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_handleFile
+            <span class="apidocSignatureSpan">(file, stats, initialAdd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler.prototype._handleSymlink">
+            function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_handleSymlink
+            <span class="apidocSignatureSpan">(entry, directory, path, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.chokidar.nodefs_handler.prototype._watchWithNodeFs">
+            function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_watchWithNodeFs
+            <span class="apidocSignatureSpan">(path, listener)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar" id="apidoc.module.chokidar">module chokidar</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher" id="apidoc.element.chokidar.FSWatcher">
+        function <span class="apidocSignatureSpan">chokidar.</span>FSWatcher
+        <span class="apidocSignatureSpan">(_opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FSWatcher(_opts) {
+  EventEmitter.call(this);
+  var opts = {};
+  // in case _opts that is passed in is a frozen object
+  if (_opts) for (var opt in _opts) opts[opt] = _opts[opt];
+  this._watched = Object.create(null);
+  this._closers = Object.create(null);
+  this._ignoredPaths = Object.create(null);
+  Object.defineProperty(this, &#x27;_globIgnored&#x27;, {
+    get: function() { return Object.keys(this._ignoredPaths); }
+  });
+  this.closed = false;
+  this._throttled = Object.create(null);
+  this._symlinkPaths = Object.create(null);
+
+  function undef(key) {
+    return opts[key] === undefined;
+  }
+
+  // Set up default options.
+  if (undef(&#x27;persistent&#x27;)) opts.persistent = true;
+  if (undef(&#x27;ignoreInitial&#x27;)) opts.ignoreInitial = false;
+  if (undef(&#x27;ignorePermissionErrors&#x27;)) opts.ignorePermissionErrors = false;
+  if (undef(&#x27;interval&#x27;)) opts.interval = 100;
+  if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+  this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
+
+  // Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
+  if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+
+  // If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+  if (!FsEventsHandler.canUse()) opts.useFsEvents = false;
+
+  // Use polling on Mac if not using fsevents.
+  // Other platforms use non-polling fs.watch.
+  if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
+    opts.usePolling = process.platform === &#x27;darwin&#x27;;
+  }
+
+  // Global override (useful for end-developers that need to force polling for all
+  // instances of chokidar, regardless of usage/dependency depth)
+  var envPoll = process.env.CHOKIDAR_USEPOLLING;
+  if (envPoll !== undefined) {
+    var envLower = envPoll.toLowerCase();
+
+    if (envLower === &#x27;false&#x27; || envLower === &#x27;0&#x27;) {
+      opts.usePolling = false;
+    } else if (envLower === &#x27;true&#x27; || envLower === &#x27;1&#x27;) {
+      opts.usePolling = true;
+    } else {
+      opts.usePolling = !!envLower
+    }
+  }
+
+  // Editor atomic write normalization enabled by default with fs.watch
+  if (undef(&#x27;atomic&#x27;)) opts.atomic = !opts.usePolling &#x26;&#x26; !opts.useFsEvents;
+  if (opts.atomic) this._pendingUnlinks = Object.create(null);
+
+  if (undef(&#x27;followSymlinks&#x27;)) opts.followSymlinks = true;
+
+  if (undef(&#x27;awaitWriteFinish&#x27;)) opts.awaitWriteFinish = false;
+  if (opts.awaitWriteFinish === true) opts.awaitWriteFinish = {};
+  var awf = opts.awaitWriteFinish;
+  if (awf) {
+    if (!awf.stabilityThreshold) awf.stabilityThreshold = 2000;
+    if (!awf.pollInterval) awf.pollInterval = 100;
+
+    this._pendingWrites = Object.create(null);
+  }
+  if (opts.ignored) opts.ignored = arrify(opts.ignored);
+
+  this._isntIgnored = function(path, stat) {
+    return !this._isIgnored(path, stat);
+  }.bind(this);
+
+  var readyCalls = 0;
+  this._emitReady = function() {
+    if (++readyCalls &#x3e;= this._readyCount) {
+      this._emitReady = Function.prototype;
+      this._readyEmitted = true;
+      // use process.nextTick to allow time for listener to be bound
+      process.nextTick(this.emit.bind(this, &#x27;ready&#x27;));
+    }
+  }.bind(this);
+
+  this.options = opts;
+
+  // You’re frozen when your heart’s not open.
+  Object.freeze(opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.fsevents_handler" id="apidoc.element.chokidar.fsevents_handler">
+        function <span class="apidocSignatureSpan">chokidar.</span>fsevents_handler
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FsEventsHandler() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler" id="apidoc.element.chokidar.nodefs_handler">
+        function <span class="apidocSignatureSpan">chokidar.</span>nodefs_handler
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NodeFsHandler() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.watch" id="apidoc.element.chokidar.watch">
+        function <span class="apidocSignatureSpan">chokidar.</span>watch
+        <span class="apidocSignatureSpan">(paths, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">watch = function (paths, options) {
+  return new FSWatcher(options).add(paths);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Then `require` and use it in your code:
+
+```javascript
+var chokidar = require(&#x27;chokidar&#x27;);
+
+// One-liner for current directory, ignores .dotfiles
+chokidar.<span class="apidocCodeKeywordSpan">watch</span>(&#x27;.&#x27;, {ignored: /[\/\\]\./}).on(&#x27;all&#x27;, (event, path
+) =&#x3e; {
+  console.log(event, path);
+});
+```
+
+```javascript
+// Example of a more typical implementation structure:
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar.FSWatcher" id="apidoc.module.chokidar.FSWatcher">module chokidar.FSWatcher</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.FSWatcher" id="apidoc.element.chokidar.FSWatcher.FSWatcher">
+        function <span class="apidocSignatureSpan">chokidar.</span>FSWatcher
+        <span class="apidocSignatureSpan">(_opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FSWatcher(_opts) {
+  EventEmitter.call(this);
+  var opts = {};
+  // in case _opts that is passed in is a frozen object
+  if (_opts) for (var opt in _opts) opts[opt] = _opts[opt];
+  this._watched = Object.create(null);
+  this._closers = Object.create(null);
+  this._ignoredPaths = Object.create(null);
+  Object.defineProperty(this, &#x27;_globIgnored&#x27;, {
+    get: function() { return Object.keys(this._ignoredPaths); }
+  });
+  this.closed = false;
+  this._throttled = Object.create(null);
+  this._symlinkPaths = Object.create(null);
+
+  function undef(key) {
+    return opts[key] === undefined;
+  }
+
+  // Set up default options.
+  if (undef(&#x27;persistent&#x27;)) opts.persistent = true;
+  if (undef(&#x27;ignoreInitial&#x27;)) opts.ignoreInitial = false;
+  if (undef(&#x27;ignorePermissionErrors&#x27;)) opts.ignorePermissionErrors = false;
+  if (undef(&#x27;interval&#x27;)) opts.interval = 100;
+  if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+  this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
+
+  // Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
+  if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+
+  // If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+  if (!FsEventsHandler.canUse()) opts.useFsEvents = false;
+
+  // Use polling on Mac if not using fsevents.
+  // Other platforms use non-polling fs.watch.
+  if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
+    opts.usePolling = process.platform === &#x27;darwin&#x27;;
+  }
+
+  // Global override (useful for end-developers that need to force polling for all
+  // instances of chokidar, regardless of usage/dependency depth)
+  var envPoll = process.env.CHOKIDAR_USEPOLLING;
+  if (envPoll !== undefined) {
+    var envLower = envPoll.toLowerCase();
+
+    if (envLower === &#x27;false&#x27; || envLower === &#x27;0&#x27;) {
+      opts.usePolling = false;
+    } else if (envLower === &#x27;true&#x27; || envLower === &#x27;1&#x27;) {
+      opts.usePolling = true;
+    } else {
+      opts.usePolling = !!envLower
+    }
+  }
+
+  // Editor atomic write normalization enabled by default with fs.watch
+  if (undef(&#x27;atomic&#x27;)) opts.atomic = !opts.usePolling &#x26;&#x26; !opts.useFsEvents;
+  if (opts.atomic) this._pendingUnlinks = Object.create(null);
+
+  if (undef(&#x27;followSymlinks&#x27;)) opts.followSymlinks = true;
+
+  if (undef(&#x27;awaitWriteFinish&#x27;)) opts.awaitWriteFinish = false;
+  if (opts.awaitWriteFinish === true) opts.awaitWriteFinish = {};
+  var awf = opts.awaitWriteFinish;
+  if (awf) {
+    if (!awf.stabilityThreshold) awf.stabilityThreshold = 2000;
+    if (!awf.pollInterval) awf.pollInterval = 100;
+
+    this._pendingWrites = Object.create(null);
+  }
+  if (opts.ignored) opts.ignored = arrify(opts.ignored);
+
+  this._isntIgnored = function(path, stat) {
+    return !this._isIgnored(path, stat);
+  }.bind(this);
+
+  var readyCalls = 0;
+  this._emitReady = function() {
+    if (++readyCalls &#x3e;= this._readyCount) {
+      this._emitReady = Function.prototype;
+      this._readyEmitted = true;
+      // use process.nextTick to allow time for listener to be bound
+      process.nextTick(this.emit.bind(this, &#x27;ready&#x27;));
+    }
+  }.bind(this);
+
+  this.options = opts;
+
+  // You’re frozen when your heart’s not open.
+  Object.freeze(opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.super_" id="apidoc.element.chokidar.FSWatcher.super_">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar.FSWatcher.prototype" id="apidoc.module.chokidar.FSWatcher.prototype">module chokidar.FSWatcher.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._addToNodeFs" id="apidoc.element.chokidar.FSWatcher.prototype._addToNodeFs">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_addToNodeFs
+        <span class="apidocSignatureSpan">(path, initialAdd, priorWh, depth, target, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addToNodeFs = function (path, initialAdd, priorWh, depth, target, callback) {
+  if (!callback) callback = Function.prototype;
+  var ready = this._emitReady;
+  if (this._isIgnored(path) || this.closed) {
+    ready();
+    return callback(null, false);
+  }
+
+  var wh = this._getWatchHelpers(path, depth);
+  if (!wh.hasGlob &#x26;&#x26; priorWh) {
+    wh.hasGlob = priorWh.hasGlob;
+    wh.globFilter = priorWh.globFilter;
+    wh.filterPath = priorWh.filterPath;
+    wh.filterDir = priorWh.filterDir;
+  }
+
+  // evaluate what is at the path we&#x27;re being asked to watch
+  fs[wh.statMethod](wh.watchPath, function(error, stats) {
+    if (this._handleError(error)) return callback(null, path);
+    if (this._isIgnored(wh.watchPath, stats)) {
+      ready();
+      return callback(null, false);
+    }
+
+    var initDir = function(dir, target) {
+      return this._handleDir(dir, stats, initialAdd, depth, target, wh, ready);
+    }.bind(this);
+
+    var closer;
+    if (stats.isDirectory()) {
+      closer = initDir(wh.watchPath, target);
+    } else if (stats.isSymbolicLink()) {
+      var parent = sysPath.dirname(wh.watchPath);
+      this._getWatchedDir(parent).add(wh.watchPath);
+      this._emit(&#x27;add&#x27;, wh.watchPath, stats);
+      closer = initDir(parent, path);
+
+      // preserve this symlink&#x27;s target path
+      fs.realpath(path, function(error, targetPath) {
+        this._symlinkPaths[sysPath.resolve(path)] = targetPath;
+        ready();
+      }.bind(this));
+    } else {
+      closer = this._handleFile(wh.watchPath, stats, initialAdd, ready);
+    }
+
+    if (closer) this._closers[path] = closer;
+    callback(null, false);
+  }.bind(this));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (!this._readyCount) this._readyCount = paths.length;
+  if (this.options.persistent) this._readyCount *= 2;
+  paths.forEach(this._addToFsEvents, this);
+} else {
+  if (!this._readyCount) this._readyCount = 0;
+  this._readyCount += paths.length;
+  asyncEach(paths, function(path, next) {
+    this.<span class="apidocCodeKeywordSpan">_addToNodeFs</span>(path, !_internal, 0, 0, _origAdd, function(err, res) {
+      if (res) this._emitReady();
+      next(err, res);
+    }.bind(this));
+  }.bind(this), function(error, results) {
+    results.forEach(function(item) {
+      if (!item) return;
+      this.add(sysPath.dirname(item), sysPath.basename(_origAdd || item));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._awaitWriteFinish" id="apidoc.element.chokidar.FSWatcher.prototype._awaitWriteFinish">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_awaitWriteFinish
+        <span class="apidocSignatureSpan">(path, threshold, event, awfEmit)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_awaitWriteFinish = function (path, threshold, event, awfEmit) {
+  var timeoutHandler;
+
+  var fullPath = path;
+  if (this.options.cwd &#x26;&#x26; !isAbsolute(path)) {
+    fullPath = sysPath.join(this.options.cwd, path);
+  }
+
+  var now = new Date();
+
+  var awaitWriteFinish = (function (prevStat) {
+    fs.stat(fullPath, function(err, curStat) {
+      if (err) {
+        if (err.code !== &#x27;ENOENT&#x27;) awfEmit(err);
+        return;
+      }
+
+      var now = new Date();
+
+      if (prevStat &#x26;&#x26; curStat.size != prevStat.size) {
+        this._pendingWrites[path].lastChange = now;
+      }
+
+      if (now - this._pendingWrites[path].lastChange &#x3e;= threshold) {
+        delete this._pendingWrites[path];
+        awfEmit(null, curStat);
+      } else {
+        timeoutHandler = setTimeout(
+          awaitWriteFinish.bind(this, curStat),
+          this.options.awaitWriteFinish.pollInterval
+        );
+      }
+    }.bind(this));
+  }.bind(this));
+
+  if (!(path in this._pendingWrites)) {
+    this._pendingWrites[path] = {
+      lastChange: now,
+      cancelWait: function() {
+        delete this._pendingWrites[path];
+        clearTimeout(timeoutHandler);
+        return event;
+      }.bind(this)
+    };
+    timeoutHandler = setTimeout(
+      awaitWriteFinish.bind(this),
+      this.options.awaitWriteFinish.pollInterval
+    );
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      } else {
+        args.push(stats);
+      }
+      emitEvent();
+    }
+  };
+
+  this.<span class="apidocCodeKeywordSpan">_awaitWriteFinish</span>(path, awf.stabilityThreshold, event, awfEmit);
+  return this;
+}
+
+if (event === &#x27;change&#x27;) {
+  if (!this._throttle(&#x27;change&#x27;, path, 50)) return this;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._closePath" id="apidoc.element.chokidar.FSWatcher.prototype._closePath">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_closePath
+        <span class="apidocSignatureSpan">(path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_closePath = function (path) {
+  if (!this._closers[path]) return;
+  this._closers[path]();
+  delete this._closers[path];
+  this._getWatchedDir(sysPath.dirname(path)).remove(sysPath.basename(path));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+delete this._watched[path];
+delete this._watched[fullPath];
+var eventName = isDirectory ? &#x27;unlinkDir&#x27; : &#x27;unlink&#x27;;
+if (wasTracked &#x26;&#x26; !this._isIgnored(path)) this._emit(eventName, path);
+
+// Avoid conflicts if we later create another file with the same name
+if (!this.options.useFsEvents) {
+  this.<span class="apidocCodeKeywordSpan">_closePath</span>(path);
+}
+};
+
+FSWatcher.prototype._closePath = function(path) {
+if (!this._closers[path]) return;
+this._closers[path]();
+delete this._closers[path];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._emit" id="apidoc.element.chokidar.FSWatcher.prototype._emit">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_emit
+        <span class="apidocSignatureSpan">(event, path, val1, val2, val3)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_emit = function (event, path, val1, val2, val3) {
+  if (this.options.cwd) path = sysPath.relative(this.options.cwd, path);
+  var args = [event, path];
+  if (val3 !== undefined) args.push(val1, val2, val3);
+  else if (val2 !== undefined) args.push(val1, val2);
+  else if (val1 !== undefined) args.push(val1);
+
+  var awf = this.options.awaitWriteFinish;
+  if (awf &#x26;&#x26; this._pendingWrites[path]) {
+    this._pendingWrites[path].lastChange = new Date();
+    return this;
+  }
+
+  if (this.options.atomic) {
+    if (event === &#x27;unlink&#x27;) {
+      this._pendingUnlinks[path] = args;
+      setTimeout(function() {
+        Object.keys(this._pendingUnlinks).forEach(function(path) {
+          this.emit.apply(this, this._pendingUnlinks[path]);
+          this.emit.apply(this, [&#x27;all&#x27;].concat(this._pendingUnlinks[path]));
+          delete this._pendingUnlinks[path];
+        }.bind(this));
+      }.bind(this), typeof this.options.atomic === &#x22;number&#x22;
+        ? this.options.atomic
+        : 100);
+      return this;
+    } else if (event === &#x27;add&#x27; &#x26;&#x26; this._pendingUnlinks[path]) {
+      event = args[0] = &#x27;change&#x27;;
+      delete this._pendingUnlinks[path];
+    }
+  }
+
+  var emitEvent = function() {
+    this.emit.apply(this, args);
+    if (event !== &#x27;error&#x27;) this.emit.apply(this, [&#x27;all&#x27;].concat(args));
+  }.bind(this);
+
+  if (awf &#x26;&#x26; (event === &#x27;add&#x27; || event === &#x27;change&#x27;) &#x26;&#x26; this._readyEmitted) {
+    var awfEmit = function(err, stats) {
+      if (err) {
+        event = args[0] = &#x27;error&#x27;;
+        args[1] = err;
+        emitEvent();
+      } else if (stats) {
+        // if stats doesn&#x27;t exist the file must have been deleted
+        if (args.length &#x3e; 2) {
+          args[2] = stats;
+        } else {
+          args.push(stats);
+        }
+        emitEvent();
+      }
+    };
+
+    this._awaitWriteFinish(path, awf.stabilityThreshold, event, awfEmit);
+    return this;
+  }
+
+  if (event === &#x27;change&#x27;) {
+    if (!this._throttle(&#x27;change&#x27;, path, 50)) return this;
+  }
+
+  if (
+    this.options.alwaysStat &#x26;&#x26; val1 === undefined &#x26;&#x26;
+    (event === &#x27;add&#x27; || event === &#x27;addDir&#x27; || event === &#x27;change&#x27;)
+  ) {
+    var fullPath = this.options.cwd ? sysPath.join(this.options.cwd, path) : path;
+    fs.stat(fullPath, function(error, stats) {
+      // Suppress event when fs.stat fails, to avoid sending undefined &#x27;stat&#x27;
+      if (error || !stats) return;
+
+      args.push(stats);
+      emitEvent();
+    });
+  } else {
+    emitEvent();
+  }
+
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+
+  // The Entry will either be a directory that just got removed
+  // or a bogus entry to a file, in either case we have to remove it
+  delete this._watched[path];
+  delete this._watched[fullPath];
+  var eventName = isDirectory ? &#x27;unlinkDir&#x27; : &#x27;unlink&#x27;;
+  if (wasTracked &#x26;&#x26; !this._isIgnored(path)) this.<span class="apidocCodeKeywordSpan">_emit</span>(eventName, path);
+
+  // Avoid conflicts if we later create another file with the same name
+  if (!this.options.useFsEvents) {
+    this._closePath(path);
+  }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._getWatchHelpers" id="apidoc.element.chokidar.FSWatcher.prototype._getWatchHelpers">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_getWatchHelpers
+        <span class="apidocSignatureSpan">(path, depth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getWatchHelpers = function (path, depth) {
+  path = path.replace(replacerRe, &#x27;&#x27;);
+  var watchPath = depth || !isGlob(path) ? path : globParent(path);
+  var fullWatchPath = sysPath.resolve(watchPath);
+  var hasGlob = watchPath !== path;
+  var globFilter = hasGlob ? anymatch(path) : false;
+  var follow = this.options.followSymlinks;
+  var globSymlink = hasGlob &#x26;&#x26; follow ? null : false;
+
+  var checkGlobSymlink = function(entry) {
+    // only need to resolve once
+    // first entry should always have entry.parentDir === &#x27;&#x27;
+    if (globSymlink == null) {
+      globSymlink = entry.fullParentDir === fullWatchPath ? false : {
+        realPath: entry.fullParentDir,
+        linkPath: fullWatchPath
+      };
+    }
+
+    if (globSymlink) {
+      return entry.fullPath.replace(globSymlink.realPath, globSymlink.linkPath);
+    }
+
+    return entry.fullPath;
+  };
+
+  var entryPath = function(entry) {
+    return sysPath.join(watchPath,
+      sysPath.relative(watchPath, checkGlobSymlink(entry))
+    );
+  };
+
+  var filterPath = function(entry) {
+    if (entry.stat &#x26;&#x26; entry.stat.isSymbolicLink()) return filterDir(entry);
+    var resolvedPath = entryPath(entry);
+    return (!hasGlob || globFilter(resolvedPath)) &#x26;&#x26;
+      this._isntIgnored(resolvedPath, entry.stat) &#x26;&#x26;
+      (this.options.ignorePermissionErrors ||
+        this._hasReadPermissions(entry.stat));
+  }.bind(this);
+
+  var getDirParts = function(path) {
+    if (!hasGlob) return false;
+    var parts = sysPath.relative(watchPath, path).split(/[\/\\]/);
+    return parts;
+  };
+
+  var dirParts = getDirParts(path);
+  if (dirParts &#x26;&#x26; dirParts.length &#x3e; 1) dirParts.pop();
+  var unmatchedGlob;
+
+  var filterDir = function(entry) {
+    if (hasGlob) {
+      var entryParts = getDirParts(checkGlobSymlink(entry));
+      var globstar = false;
+      unmatchedGlob = !dirParts.every(function(part, i) {
+        if (part === &#x27;**&#x27;) globstar = true;
+        return globstar || !entryParts[i] || anymatch(part, entryParts[i]);
+      });
+    }
+    return !unmatchedGlob &#x26;&#x26; this._isntIgnored(entryPath(entry), entry.stat);
+  }.bind(this);
+
+  return {
+    followSymlinks: follow,
+    statMethod: follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;,
+    path: path,
+    watchPath: watchPath,
+    entryPath: entryPath,
+    hasGlob: hasGlob,
+    globFilter: globFilter,
+    filterPath: filterPath,
+    filterDir: filterDir
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  dirObj.add(base);
+
+  if (!this.options.ignoreInitial || forceAdd === true) {
+    this._emit(isDir ? &#x27;addDir&#x27; : &#x27;add&#x27;, pp, stats);
+  }
+}.bind(this);
+
+var wh = this.<span class="apidocCodeKeywordSpan">_getWatchHelpers</span>(path);
+
+// evaluate what is at the path we&#x27;re being asked to watch
+fs[wh.statMethod](wh.watchPath, function(error, stats) {
+  if (this._handleError(error) || this._isIgnored(wh.watchPath, stats)) {
+    this._emitReady();
+    return this._emitReady();
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._getWatchedDir" id="apidoc.element.chokidar.FSWatcher.prototype._getWatchedDir">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_getWatchedDir
+        <span class="apidocSignatureSpan">(directory)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getWatchedDir = function (directory) {
+  var dir = sysPath.resolve(directory);
+  var watcherRemove = this._remove.bind(this);
+  if (!(dir in this._watched)) this._watched[dir] = {
+    _items: Object.create(null),
+    add: function(item) {
+      if (item !== &#x27;.&#x27;) this._items[item] = true;
+    },
+    remove: function(item) {
+      delete this._items[item];
+      if (!this.children().length) {
+        fs.readdir(dir, function(err) {
+          if (err) watcherRemove(sysPath.dirname(dir), sysPath.basename(dir));
+        });
+      }
+    },
+    has: function(item) {return item in this._items;},
+    children: function() {return Object.keys(this._items);}
+  };
+  return this._watched[dir];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var watchedDirs = Object.keys(this._watched);
+if (!isDirectory &#x26;&#x26; !this.options.useFsEvents &#x26;&#x26; watchedDirs.length === 1) {
+  this.add(directory, item, true);
+}
+
+// This will create a new entry in the watched object in either case
+// so we got to do the directory check beforehand
+var nestedDirectoryChildren = this.<span class="apidocCodeKeywordSpan">_getWatchedDir</span>(path).children();
+
+// Recursively remove children directories / files.
+nestedDirectoryChildren.forEach(function(nestedItem) {
+  this._remove(path, nestedItem);
+}, this);
+
+// Check if item was on the watched list and remove it
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._handleDir" id="apidoc.element.chokidar.FSWatcher.prototype._handleDir">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleDir
+        <span class="apidocSignatureSpan">(dir, stats, initialAdd, depth, target, wh, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleDir = function (dir, stats, initialAdd, depth, target, wh, callback) {
+  var parentDir = this._getWatchedDir(sysPath.dirname(dir));
+  var tracked = parentDir.has(sysPath.basename(dir));
+  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial) &#x26;&#x26; !target &#x26;&#x26; !tracked) {
+    if (!wh.hasGlob || wh.globFilter(dir)) this._emit(&#x27;addDir&#x27;, dir, stats);
+  }
+
+  // ensure dir is tracked (harmless if redundant)
+  parentDir.add(sysPath.basename(dir));
+  this._getWatchedDir(dir);
+
+  var read = function(directory, initialAdd, done) {
+    // Normalize the directory name on Windows
+    directory = sysPath.join(directory, &#x27;&#x27;);
+
+    if (!wh.hasGlob) {
+      var throttler = this._throttle(&#x27;readdir&#x27;, directory, 1000);
+      if (!throttler) return;
+    }
+
+    var previous = this._getWatchedDir(wh.path);
+    var current = [];
+
+    readdirp({
+      root: directory,
+      entryType: &#x27;all&#x27;,
+      fileFilter: wh.filterPath,
+      directoryFilter: wh.filterDir,
+      depth: 0,
+      lstat: true
+    }).on(&#x27;data&#x27;, function(entry) {
+      var item = entry.path;
+      var path = sysPath.join(directory, item);
+      current.push(item);
+
+      if (entry.stat.isSymbolicLink() &#x26;&#x26;
+        this._handleSymlink(entry, directory, path, item)) return;
+
+      // Files that present in current directory snapshot
+      // but absent in previous are added to watch list and
+      // emit `add` event.
+      if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+        this._readyCount++;
+
+        // ensure relativeness of path is preserved in case of watcher reuse
+        path = sysPath.join(dir, sysPath.relative(dir, path));
+
+        this._addToNodeFs(path, initialAdd, wh, depth + 1);
+      }
+    }.bind(this)).on(&#x27;end&#x27;, function() {
+      if (throttler) throttler.clear();
+      if (done) done();
+
+      // Files that absent in current directory snapshot
+      // but present in previous emit `remove` event
+      // and are removed from @watched[directory].
+      previous.children().filter(function(item) {
+        return item !== directory &#x26;&#x26;
+          current.indexOf(item) === -1 &#x26;&#x26;
+          // in case of intersecting globs;
+          // a path may have been filtered out of this readdir, but
+          // shouldn&#x27;t be removed because it matches a different glob
+          (!wh.hasGlob || wh.filterPath({
+            fullPath: sysPath.resolve(directory, item)
+          }));
+      }).forEach(function(item) {
+        this._remove(directory, item);
+      }, this);
+    }.bind(this)).on(&#x27;error&#x27;, this._handleError.bind(this));
+  }.bind(this);
+
+  var closer;
+
+  if (this.options.depth == null || depth &#x3c;= this.options.depth) {
+    if (!target) read(dir, initialAdd, callback);
+    closer = this._watchWithNodeFs(dir, function(dirPath, stats) {
+      // if current directory is removed, do nothing
+      if (stats &#x26;&#x26; stats.mtime.getTime() === 0) return;
+
+      read(dirPath, false);
+    });
+  } else {
+    callback();
+  }
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (this._handleError(error)) return callback(null, path);
+if (this._isIgnored(wh.watchPath, stats)) {
+  ready();
+  return callback(null, false);
+}
+
+var initDir = function(dir, target) {
+  return this.<span class="apidocCodeKeywordSpan">_handleDir</span>(dir, stats, initialAdd, depth, target, wh, ready);
+}.bind(this);
+
+var closer;
+if (stats.isDirectory()) {
+  closer = initDir(wh.watchPath, target);
+} else if (stats.isSymbolicLink()) {
+  var parent = sysPath.dirname(wh.watchPath);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._handleError" id="apidoc.element.chokidar.FSWatcher.prototype._handleError">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleError
+        <span class="apidocSignatureSpan">(error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleError = function (error) {
+  var code = error &#x26;&#x26; error.code;
+  var ipe = this.options.ignorePermissionErrors;
+  if (error &#x26;&#x26;
+    code !== &#x27;ENOENT&#x27; &#x26;&#x26;
+    code !== &#x27;ENOTDIR&#x27; &#x26;&#x26;
+    (!ipe || (code !== &#x27;EPERM&#x27; &#x26;&#x26; code !== &#x27;EACCES&#x27;))
+  ) this.emit(&#x27;error&#x27;, error);
+  return error || this.closed;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // don&#x27;t follow the same symlink more than once
+  if (this._symlinkPaths[fullPath]) return;
+  else this._symlinkPaths[fullPath] = true;
+
+  this._readyCount++;
+
+  fs.realpath(linkPath, function(error, linkTarget) {
+if (this.<span class="apidocCodeKeywordSpan">_handleError</span>(error) || this._isIgnored(linkTarget)) {
+  return this._emitReady();
+}
+
+this._readyCount++;
+
+// add the linkTarget for watching with a wrapper for transform
+// that causes emitted paths to incorporate the link&#x27;s path
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._handleFile" id="apidoc.element.chokidar.FSWatcher.prototype._handleFile">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleFile
+        <span class="apidocSignatureSpan">(file, stats, initialAdd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleFile = function (file, stats, initialAdd, callback) {
+  var dirname = sysPath.dirname(file);
+  var basename = sysPath.basename(file);
+  var parent = this._getWatchedDir(dirname);
+
+  // if the file is already being watched, do nothing
+  if (parent.has(basename)) return callback();
+
+  // kick off the watcher
+  var closer = this._watchWithNodeFs(file, function(path, newStats) {
+    if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
+    if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+      fs.stat(file, function(error, newStats) {
+        // Fix issues where mtime is null but file is still present
+        if (error) {
+          this._remove(dirname, basename);
+        } else {
+          this._emit(&#x27;change&#x27;, file, newStats);
+        }
+      }.bind(this));
+    // add is about to be emitted if file not already tracked in parent
+    } else if (parent.has(basename)) {
+      this._emit(&#x27;change&#x27;, file, newStats);
+    }
+  }.bind(this));
+
+  // emit an add event if we&#x27;re supposed to
+  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial)) {
+    if (!this._throttle(&#x27;add&#x27;, file, 0)) return;
+    this._emit(&#x27;add&#x27;, file, stats);
+  }
+
+  if (callback) callback();
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+      // preserve this symlink&#x27;s target path
+      fs.realpath(path, function(error, targetPath) {
+        this._symlinkPaths[sysPath.resolve(path)] = targetPath;
+        ready();
+      }.bind(this));
+    } else {
+      closer = this.<span class="apidocCodeKeywordSpan">_handleFile</span>(wh.watchPath, stats, initialAdd, ready);
+    }
+
+    if (closer) this._closers[path] = closer;
+    callback(null, false);
+  }.bind(this));
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._handleSymlink" id="apidoc.element.chokidar.FSWatcher.prototype._handleSymlink">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_handleSymlink
+        <span class="apidocSignatureSpan">(entry, directory, path, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleSymlink = function (entry, directory, path, item) {
+  var full = entry.fullPath;
+  var dir = this._getWatchedDir(directory);
+
+  if (!this.options.followSymlinks) {
+    // watch symlink directly (don&#x27;t follow) and detect changes
+    this._readyCount++;
+    fs.realpath(path, function(error, linkPath) {
+      if (dir.has(item)) {
+        if (this._symlinkPaths[full] !== linkPath) {
+          this._symlinkPaths[full] = linkPath;
+          this._emit(&#x27;change&#x27;, path, entry.stat);
+        }
+      } else {
+        dir.add(item);
+        this._symlinkPaths[full] = linkPath;
+        this._emit(&#x27;add&#x27;, path, entry.stat);
+      }
+      this._emitReady();
+    }.bind(this));
+    return true;
+  }
+
+  // don&#x27;t follow the same symlink more than once
+  if (this._symlinkPaths[full]) return true;
+  else this._symlinkPaths[full] = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+lstat: true
+    }).on(&#x27;data&#x27;, function(entry) {
+var item = entry.path;
+var path = sysPath.join(directory, item);
+current.push(item);
+
+if (entry.stat.isSymbolicLink() &#x26;&#x26;
+  this.<span class="apidocCodeKeywordSpan">_handleSymlink</span>(entry, directory, path, item)) return;
+
+// Files that present in current directory snapshot
+// but absent in previous are added to watch list and
+// emit `add` event.
+if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+  this._readyCount++;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._hasReadPermissions" id="apidoc.element.chokidar.FSWatcher.prototype._hasReadPermissions">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_hasReadPermissions
+        <span class="apidocSignatureSpan">(stats)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_hasReadPermissions = function (stats) {
+  return Boolean(4 &#x26; parseInt(((stats &#x26;&#x26; stats.mode) &#x26; 0x1ff).toString(8)[0], 10));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var filterPath = function(entry) {
+  if (entry.stat &#x26;&#x26; entry.stat.isSymbolicLink()) return filterDir(entry);
+  var resolvedPath = entryPath(entry);
+  return (!hasGlob || globFilter(resolvedPath)) &#x26;&#x26;
+    this._isntIgnored(resolvedPath, entry.stat) &#x26;&#x26;
+    (this.options.ignorePermissionErrors ||
+      this.<span class="apidocCodeKeywordSpan">_hasReadPermissions</span>(entry.stat));
+}.bind(this);
+
+var getDirParts = function(path) {
+  if (!hasGlob) return false;
+  var parts = sysPath.relative(watchPath, path).split(/[\/\\]/);
+  return parts;
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._isIgnored" id="apidoc.element.chokidar.FSWatcher.prototype._isIgnored">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_isIgnored
+        <span class="apidocSignatureSpan">(path, stats)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_isIgnored = function (path, stats) {
+  if (this.options.atomic &#x26;&#x26; dotRe.test(path)) return true;
+
+  if (!this._userIgnored) {
+    var cwd = this.options.cwd;
+    var ignored = this.options.ignored;
+    if (cwd &#x26;&#x26; ignored) {
+      ignored = ignored.map(function (path) {
+        if (typeof path !== &#x27;string&#x27;) return path;
+        return isAbsolute(path) ? path : sysPath.join(cwd, path);
+      });
+    }
+    var paths = arrify(ignored)
+      .filter(function(path) {
+        return typeof path === &#x27;string&#x27; &#x26;&#x26; !isGlob(path);
+      }).map(function(path) {
+        return path + &#x27;/**&#x27;;
+      });
+    this._userIgnored = anymatch(
+      this._globIgnored.concat(ignored).concat(paths)
+    );
+  }
+
+  return this._userIgnored([path, stats]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (!awf.pollInterval) awf.pollInterval = 100;
+
+  this._pendingWrites = Object.create(null);
+}
+if (opts.ignored) opts.ignored = arrify(opts.ignored);
+
+this._isntIgnored = function(path, stat) {
+  return !this.<span class="apidocCodeKeywordSpan">_isIgnored</span>(path, stat);
+}.bind(this);
+
+var readyCalls = 0;
+this._emitReady = function() {
+  if (++readyCalls &#x3e;= this._readyCount) {
+    this._emitReady = Function.prototype;
+    this._readyEmitted = true;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._remove" id="apidoc.element.chokidar.FSWatcher.prototype._remove">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_remove
+        <span class="apidocSignatureSpan">(directory, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_remove = function (directory, item) {
+  // if what is being deleted is a directory, get that directory&#x27;s paths
+  // for recursive deleting and cleaning of watched object
+  // if it is not a directory, nestedDirectoryChildren will be empty array
+  var path = sysPath.join(directory, item);
+  var fullPath = sysPath.resolve(path);
+  var isDirectory = this._watched[path] || this._watched[fullPath];
+
+  // prevent duplicate handling in case of arriving here nearly simultaneously
+  // via multiple paths (such as _handleFile and _handleDir)
+  if (!this._throttle(&#x27;remove&#x27;, path, 100)) return;
+
+  // if the only watched file is removed, watch for its return
+  var watchedDirs = Object.keys(this._watched);
+  if (!isDirectory &#x26;&#x26; !this.options.useFsEvents &#x26;&#x26; watchedDirs.length === 1) {
+    this.add(directory, item, true);
+  }
+
+  // This will create a new entry in the watched object in either case
+  // so we got to do the directory check beforehand
+  var nestedDirectoryChildren = this._getWatchedDir(path).children();
+
+  // Recursively remove children directories / files.
+  nestedDirectoryChildren.forEach(function(nestedItem) {
+    this._remove(path, nestedItem);
+  }, this);
+
+  // Check if item was on the watched list and remove it
+  var parent = this._getWatchedDir(directory);
+  var wasTracked = parent.has(item);
+  parent.remove(item);
+
+  // If we wait for this file to be fully written, cancel the wait.
+  var relPath = path;
+  if (this.options.cwd) relPath = sysPath.relative(this.options.cwd, path);
+  if (this.options.awaitWriteFinish &#x26;&#x26; this._pendingWrites[relPath]) {
+    var event = this._pendingWrites[relPath].cancelWait();
+    if (event === &#x27;add&#x27;) return;
+  }
+
+  // The Entry will either be a directory that just got removed
+  // or a bogus entry to a file, in either case we have to remove it
+  delete this._watched[path];
+  delete this._watched[fullPath];
+  var eventName = isDirectory ? &#x27;unlinkDir&#x27; : &#x27;unlink&#x27;;
+  if (wasTracked &#x26;&#x26; !this._isIgnored(path)) this._emit(eventName, path);
+
+  // Avoid conflicts if we later create another file with the same name
+  if (!this.options.useFsEvents) {
+    this._closePath(path);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// This will create a new entry in the watched object in either case
+// so we got to do the directory check beforehand
+var nestedDirectoryChildren = this._getWatchedDir(path).children();
+
+// Recursively remove children directories / files.
+nestedDirectoryChildren.forEach(function(nestedItem) {
+  this.<span class="apidocCodeKeywordSpan">_remove</span>(path, nestedItem);
+}, this);
+
+// Check if item was on the watched list and remove it
+var parent = this._getWatchedDir(directory);
+var wasTracked = parent.has(item);
+parent.remove(item);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._throttle" id="apidoc.element.chokidar.FSWatcher.prototype._throttle">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_throttle
+        <span class="apidocSignatureSpan">(action, path, timeout)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_throttle = function (action, path, timeout) {
+  if (!(action in this._throttled)) {
+    this._throttled[action] = Object.create(null);
+  }
+  var throttled = this._throttled[action];
+  if (path in throttled) return false;
+  function clear() {
+    delete throttled[path];
+    clearTimeout(timeoutObject);
+  }
+  var timeoutObject = setTimeout(clear, timeout);
+  throttled[path] = {timeoutObject: timeoutObject, clear: clear};
+  return throttled[path];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  };
+
+  this._awaitWriteFinish(path, awf.stabilityThreshold, event, awfEmit);
+  return this;
+}
+
+if (event === &#x27;change&#x27;) {
+  if (!this.<span class="apidocCodeKeywordSpan">_throttle</span>(&#x27;change&#x27;, path, 50)) return this;
+}
+
+if (
+  this.options.alwaysStat &#x26;&#x26; val1 === undefined &#x26;&#x26;
+  (event === &#x27;add&#x27; || event === &#x27;addDir&#x27; || event === &#x27;change&#x27;)
+) {
+  var fullPath = this.options.cwd ? sysPath.join(this.options.cwd, path) : path;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype._watchWithNodeFs" id="apidoc.element.chokidar.FSWatcher.prototype._watchWithNodeFs">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>_watchWithNodeFs
+        <span class="apidocSignatureSpan">(path, listener)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_watchWithNodeFs = function (path, listener) {
+  var directory = sysPath.dirname(path);
+  var basename = sysPath.basename(path);
+  var parent = this._getWatchedDir(directory);
+  parent.add(basename);
+  var absolutePath = sysPath.resolve(path);
+  var options = {persistent: this.options.persistent};
+  if (!listener) listener = Function.prototype; // empty function
+
+  var closer;
+  if (this.options.usePolling) {
+    options.interval = this.enableBinaryInterval &#x26;&#x26; isBinaryPath(basename) ?
+      this.options.binaryInterval : this.options.interval;
+    closer = setFsWatchFileListener(path, absolutePath, options, {
+      listener: listener,
+      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+    });
+  } else {
+    closer = setFsWatchListener(path, absolutePath, options, {
+      listener: listener,
+      errHandler: this._handleError.bind(this),
+      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+    });
+  }
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var basename = sysPath.basename(file);
+var parent = this._getWatchedDir(dirname);
+
+// if the file is already being watched, do nothing
+if (parent.has(basename)) return callback();
+
+// kick off the watcher
+var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(file, function(path, newStats) {
+  if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
+  if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+    fs.stat(file, function(error, newStats) {
+      // Fix issues where mtime is null but file is still present
+      if (error) {
+        this._remove(dirname, basename);
+      } else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype.add" id="apidoc.element.chokidar.FSWatcher.prototype.add">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>add
+        <span class="apidocSignatureSpan">(paths, _origAdd, _internal)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (paths, _origAdd, _internal) {
+  var cwd = this.options.cwd;
+  this.closed = false;
+  paths = flatten(arrify(paths));
+
+  if (!paths.every(isString)) {
+    throw new TypeError(&#x27;Non-string provided as watch path: &#x27; + paths);
+  }
+
+  if (cwd) paths = paths.map(function(path) {
+    if (isAbsolute(path)) {
+      return path;
+    } else if (path[0] === &#x27;!&#x27;) {
+      return &#x27;!&#x27; + sysPath.join(cwd, path.substring(1));
+    } else {
+      return sysPath.join(cwd, path);
+    }
+  });
+
+  // set aside negated glob strings
+  paths = paths.filter(function(path) {
+    if (path[0] === &#x27;!&#x27;) {
+      this._ignoredPaths[path.substring(1)] = true;
+    } else {
+      // if a path is being added that was previously ignored, stop ignoring it
+      delete this._ignoredPaths[path];
+      delete this._ignoredPaths[path + &#x27;/**&#x27;];
+
+      // reset the cached userIgnored anymatch fn
+      // to make ignoredPaths changes effective
+      this._userIgnored = null;
+
+      return true;
+    }
+  }, this);
+
+  if (this.options.useFsEvents &#x26;&#x26; FsEventsHandler.canUse()) {
+    if (!this._readyCount) this._readyCount = paths.length;
+    if (this.options.persistent) this._readyCount *= 2;
+    paths.forEach(this._addToFsEvents, this);
+  } else {
+    if (!this._readyCount) this._readyCount = 0;
+    this._readyCount += paths.length;
+    asyncEach(paths, function(path, next) {
+      this._addToNodeFs(path, !_internal, 0, 0, _origAdd, function(err, res) {
+        if (res) this._emitReady();
+        next(err, res);
+      }.bind(this));
+    }.bind(this), function(error, results) {
+      results.forEach(function(item) {
+        if (!item) return;
+        this.add(sysPath.dirname(item), sysPath.basename(_origAdd || item));
+      }, this);
+    }.bind(this));
+  }
+
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// &#x27;add&#x27;, &#x27;addDir&#x27; and &#x27;change&#x27; events also receive stat() results as second
+// argument when available: http://nodejs.org/api/fs.html#fs_class_fs_stats
+watcher.on(&#x27;change&#x27;, (path, stats) =&#x3e; {
+  if (stats) console.log(`File ${path} changed size to ${stats.size}`);
+});
+
+// Watch new files.
+watcher.<span class="apidocCodeKeywordSpan">add</span>(&#x27;new-file&#x27;);
+watcher.add([&#x27;new-file-2&#x27;, &#x27;new-file-3&#x27;, &#x27;**/other-file*&#x27;]);
+
+// Get list of actual paths being watched on the filesystem
+var watchedPaths = watcher.getWatched();
+
+// Un-watch some files.
+watcher.unwatch(&#x27;new-file*&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype.close" id="apidoc.element.chokidar.FSWatcher.prototype.close">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>close
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function () {
+  if (this.closed) return this;
+
+  this.closed = true;
+  Object.keys(this._closers).forEach(function(watchPath) {
+    this._closers[watchPath]();
+    delete this._closers[watchPath];
+  }, this);
+  this._watched = Object.create(null);
+
+  this.removeAllListeners();
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Get list of actual paths being watched on the filesystem
+var watchedPaths = watcher.getWatched();
+
+// Un-watch some files.
+watcher.unwatch(&#x27;new-file*&#x27;);
+
+// Stop watching.
+watcher.<span class="apidocCodeKeywordSpan">close</span>();
+
+// Full list of options. See below for descriptions. (do not use this example)
+chokidar.watch(&#x27;file&#x27;, {
+persistent: true,
+
+ignored: &#x27;*.txt&#x27;,
+ignoreInitial: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype.getWatched" id="apidoc.element.chokidar.FSWatcher.prototype.getWatched">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>getWatched
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getWatched = function () {
+  var watchList = {};
+  Object.keys(this._watched).forEach(function(dir) {
+    var key = this.options.cwd ? sysPath.relative(this.options.cwd, dir) : dir;
+    watchList[key || &#x27;.&#x27;] = Object.keys(this._watched[dir]._items).sort();
+  }.bind(this));
+  return watchList;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+});
+
+// Watch new files.
+watcher.add(&#x27;new-file&#x27;);
+watcher.add([&#x27;new-file-2&#x27;, &#x27;new-file-3&#x27;, &#x27;**/other-file*&#x27;]);
+
+// Get list of actual paths being watched on the filesystem
+var watchedPaths = watcher.<span class="apidocCodeKeywordSpan">getWatched</span>();
+
+// Un-watch some files.
+watcher.unwatch(&#x27;new-file*&#x27;);
+
+// Stop watching.
+watcher.close();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.FSWatcher.prototype.unwatch" id="apidoc.element.chokidar.FSWatcher.prototype.unwatch">
+        function <span class="apidocSignatureSpan">chokidar.FSWatcher.prototype.</span>unwatch
+        <span class="apidocSignatureSpan">(paths)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unwatch = function (paths) {
+  if (this.closed) return this;
+  paths = flatten(arrify(paths));
+
+  paths.forEach(function(path) {
+    // convert to absolute path unless relative path already matches
+    if (!isAbsolute(path) &#x26;&#x26; !this._closers[path]) {
+      if (this.options.cwd) path = sysPath.join(this.options.cwd, path);
+      path = sysPath.resolve(path);
+    }
+
+    this._closePath(path);
+
+    this._ignoredPaths[path] = true;
+    if (path in this._watched) {
+      this._ignoredPaths[path + &#x27;/**&#x27;] = true;
+    }
+
+    // reset the cached userIgnored anymatch fn
+    // to make ignoredPaths changes effective
+    this._userIgnored = null;
+  }, this);
+
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+watcher.add(&#x27;new-file&#x27;);
+watcher.add([&#x27;new-file-2&#x27;, &#x27;new-file-3&#x27;, &#x27;**/other-file*&#x27;]);
+
+// Get list of actual paths being watched on the filesystem
+var watchedPaths = watcher.getWatched();
+
+// Un-watch some files.
+watcher.<span class="apidocCodeKeywordSpan">unwatch</span>(&#x27;new-file*&#x27;);
+
+// Stop watching.
+watcher.close();
+
+// Full list of options. See below for descriptions. (do not use this example)
+chokidar.watch(&#x27;file&#x27;, {
+persistent: true,
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar.fsevents_handler" id="apidoc.module.chokidar.fsevents_handler">module chokidar.fsevents_handler</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.fsevents_handler.fsevents_handler" id="apidoc.element.chokidar.fsevents_handler.fsevents_handler">
+        function <span class="apidocSignatureSpan">chokidar.</span>fsevents_handler
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FsEventsHandler() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.fsevents_handler.canUse" id="apidoc.element.chokidar.fsevents_handler.canUse">
+        function <span class="apidocSignatureSpan">chokidar.fsevents_handler.</span>canUse
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function canUse() {
+  return fsevents &#x26;&#x26; Object.keys(FSEventsWatchers).length &#x3c; 128;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
+
+// Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
+if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+
+// If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+if (!FsEventsHandler.<span class="apidocCodeKeywordSpan">canUse</span>()) opts.useFsEvents = false;
+
+// Use polling on Mac if not using fsevents.
+// Other platforms use non-polling fs.watch.
+if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
+  opts.usePolling = process.platform === &#x27;darwin&#x27;;
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar.fsevents_handler.prototype" id="apidoc.module.chokidar.fsevents_handler.prototype">module chokidar.fsevents_handler.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.fsevents_handler.prototype._addToFsEvents" id="apidoc.element.chokidar.fsevents_handler.prototype._addToFsEvents">
+        function <span class="apidocSignatureSpan">chokidar.fsevents_handler.prototype.</span>_addToFsEvents
+        <span class="apidocSignatureSpan">(path, transform, forceAdd, priorDepth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addToFsEvents = function (path, transform, forceAdd, priorDepth) {
+
+  // applies transform if provided, otherwise returns same value
+  var processPath = typeof transform === &#x27;function&#x27; ?
+    transform : function(val) { return val; };
+
+  var emitAdd = function(newPath, stats) {
+    var pp = processPath(newPath);
+    var isDir = stats.isDirectory();
+    var dirObj = this._getWatchedDir(sysPath.dirname(pp));
+    var base = sysPath.basename(pp);
+
+    // ensure empty dirs get tracked
+    if (isDir) this._getWatchedDir(pp);
+
+    if (dirObj.has(base)) return;
+    dirObj.add(base);
+
+    if (!this.options.ignoreInitial || forceAdd === true) {
+      this._emit(isDir ? &#x27;addDir&#x27; : &#x27;add&#x27;, pp, stats);
+    }
+  }.bind(this);
+
+  var wh = this._getWatchHelpers(path);
+
+  // evaluate what is at the path we&#x27;re being asked to watch
+  fs[wh.statMethod](wh.watchPath, function(error, stats) {
+    if (this._handleError(error) || this._isIgnored(wh.watchPath, stats)) {
+      this._emitReady();
+      return this._emitReady();
+    }
+
+    if (stats.isDirectory()) {
+      // emit addDir unless this is a glob parent
+      if (!wh.globFilter) emitAdd(processPath(path), stats);
+
+      // don&#x27;t recurse further if it would exceed depth setting
+      if (priorDepth &#x26;&#x26; priorDepth &#x3e; this.options.depth) return;
+
+      // scan the contents of the dir
+      readdirp({
+        root: wh.watchPath,
+        entryType: &#x27;all&#x27;,
+        fileFilter: wh.filterPath,
+        directoryFilter: wh.filterDir,
+        lstat: true,
+        depth: this.options.depth - (priorDepth || 0)
+      }).on(&#x27;data&#x27;, function(entry) {
+        // need to check filterPath on dirs b/c filterDir is less restrictive
+        if (entry.stat.isDirectory() &#x26;&#x26; !wh.filterPath(entry)) return;
+
+        var joinedPath = sysPath.join(wh.watchPath, entry.path);
+        var fullPath = entry.fullPath;
+
+        if (wh.followSymlinks &#x26;&#x26; entry.stat.isSymbolicLink()) {
+          // preserve the current depth here since it can&#x27;t be derived from
+          // real paths past the symlink
+          var curDepth = this.options.depth === undefined ?
+            undefined : depth(joinedPath, sysPath.resolve(wh.watchPath)) + 1;
+
+          this._handleFsEventsSymlink(joinedPath, fullPath, processPath, curDepth);
+        } else {
+          emitAdd(joinedPath, entry.stat);
+        }
+      }.bind(this)).on(&#x27;error&#x27;, function() {
+        // Ignore readdirp errors
+      }).on(&#x27;end&#x27;, this._emitReady);
+    } else {
+      emitAdd(wh.watchPath, stats);
+      this._emitReady();
+    }
+  }.bind(this));
+
+  if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
+    var initWatch = function(error, realPath) {
+      var closer = this._watchWithFsEvents(
+        wh.watchPath,
+        sysPath.resolve(realPath || wh.watchPath),
+        processPath,
+        wh.globFilter
+      );
+      if (closer) this._closers[path] = closer;
+    }.bind(this);
+
+    if (typeof transform === &#x27;function&#x27;) {
+      // realpath has already been resolved
+      initWatch();
+    } else {
+      fs.realpath(wh.watchPath, initWatch);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // track new directories
+  if (info.type === &#x27;directory&#x27;) this._getWatchedDir(path);
+
+  if (info.type === &#x27;symlink&#x27; &#x26;&#x26; this.options.followSymlinks) {
+    // push symlinks back to the top of the stack to get handled
+    var curDepth = this.options.depth === undefined ?
+      undefined : depth(fullPath, realPath) + 1;
+    return this.<span class="apidocCodeKeywordSpan">_addToFsEvents</span>(path, false, true, curDepth);
+  } else {
+    // track new paths
+    // (other than symlinks being followed, which will be tracked soon)
+    this._getWatchedDir(parent).add(item);
+  }
+}
+var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : event;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.fsevents_handler.prototype._handleFsEventsSymlink" id="apidoc.element.chokidar.fsevents_handler.prototype._handleFsEventsSymlink">
+        function <span class="apidocSignatureSpan">chokidar.fsevents_handler.prototype.</span>_handleFsEventsSymlink
+        <span class="apidocSignatureSpan">(linkPath, fullPath, transform, curDepth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleFsEventsSymlink = function (linkPath, fullPath, transform, curDepth) {
+  // don&#x27;t follow the same symlink more than once
+  if (this._symlinkPaths[fullPath]) return;
+  else this._symlinkPaths[fullPath] = true;
+
+  this._readyCount++;
+
+  fs.realpath(linkPath, function(error, linkTarget) {
+    if (this._handleError(error) || this._isIgnored(linkTarget)) {
+      return this._emitReady();
+    }
+
+    this._readyCount++;
+
+    // add the linkTarget for watching with a wrapper for transform
+    // that causes emitted paths to incorporate the link&#x27;s path
+    this._addToFsEvents(linkTarget || linkPath, function(path) {
+      var dotSlash = &#x27;.&#x27; + sysPath.sep;
+      var aliasedPath = linkPath;
+      if (linkTarget &#x26;&#x26; linkTarget !== dotSlash) {
+        aliasedPath = path.replace(linkTarget, linkPath);
+      } else if (path !== dotSlash) {
+        aliasedPath = sysPath.join(linkPath, path);
+      }
+      return transform(aliasedPath);
+    }, false, curDepth);
+  }.bind(this));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    if (wh.followSymlinks &#x26;&#x26; entry.stat.isSymbolicLink()) {
+      // preserve the current depth here since it can&#x27;t be derived from
+      // real paths past the symlink
+      var curDepth = this.options.depth === undefined ?
+        undefined : depth(joinedPath, sysPath.resolve(wh.watchPath)) + 1;
+
+      this.<span class="apidocCodeKeywordSpan">_handleFsEventsSymlink</span>(joinedPath, fullPath, processPath, curDepth);
+    } else {
+      emitAdd(joinedPath, entry.stat);
+    }
+  }.bind(this)).on(&#x27;error&#x27;, function() {
+    // Ignore readdirp errors
+  }).on(&#x27;end&#x27;, this._emitReady);
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.fsevents_handler.prototype._watchWithFsEvents" id="apidoc.element.chokidar.fsevents_handler.prototype._watchWithFsEvents">
+        function <span class="apidocSignatureSpan">chokidar.fsevents_handler.prototype.</span>_watchWithFsEvents
+        <span class="apidocSignatureSpan">(watchPath, realPath, transform, globFilter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_watchWithFsEvents = function (watchPath, realPath, transform, globFilter) {
+  if (this._isIgnored(watchPath)) return;
+  var watchCallback = function(fullPath, flags, info) {
+    if (
+      this.options.depth !== undefined &#x26;&#x26;
+      depth(fullPath, realPath) &#x3e; this.options.depth
+    ) return;
+    var path = transform(sysPath.join(
+      watchPath, sysPath.relative(watchPath, fullPath)
+    ));
+    if (globFilter &#x26;&#x26; !globFilter(path)) return;
+    // ensure directories are tracked
+    var parent = sysPath.dirname(path);
+    var item = sysPath.basename(path);
+    var watchedDir = this._getWatchedDir(
+      info.type === &#x27;directory&#x27; ? path : parent
+    );
+    var checkIgnored = function(stats) {
+      if (this._isIgnored(path, stats)) {
+        this._ignoredPaths[path] = true;
+        if (stats &#x26;&#x26; stats.isDirectory()) {
+          this._ignoredPaths[path + &#x27;/**/*&#x27;] = true;
+        }
+        return true;
+      } else {
+        delete this._ignoredPaths[path];
+        delete this._ignoredPaths[path + &#x27;/**/*&#x27;];
+      }
+    }.bind(this);
+
+    var handleEvent = function(event) {
+      if (checkIgnored()) return;
+
+      if (event === &#x27;unlink&#x27;) {
+        // suppress unlink events on never before seen files
+        if (info.type === &#x27;directory&#x27; || watchedDir.has(item)) {
+          this._remove(parent, item);
+        }
+      } else {
+        if (event === &#x27;add&#x27;) {
+          // track new directories
+          if (info.type === &#x27;directory&#x27;) this._getWatchedDir(path);
+
+          if (info.type === &#x27;symlink&#x27; &#x26;&#x26; this.options.followSymlinks) {
+            // push symlinks back to the top of the stack to get handled
+            var curDepth = this.options.depth === undefined ?
+              undefined : depth(fullPath, realPath) + 1;
+            return this._addToFsEvents(path, false, true, curDepth);
+          } else {
+            // track new paths
+            // (other than symlinks being followed, which will be tracked soon)
+            this._getWatchedDir(parent).add(item);
+          }
+        }
+        var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : event;
+        this._emit(eventName, path);
+        if (eventName === &#x27;addDir&#x27;) this._addToFsEvents(path, false, true);
+      }
+    }.bind(this);
+
+    function addOrChange() {
+      handleEvent(watchedDir.has(item) ? &#x27;change&#x27; : &#x27;add&#x27;);
+    }
+    function checkFd() {
+      fs.open(path, &#x27;r&#x27;, function(error, fd) {
+        if (fd) fs.close(fd);
+        error &#x26;&#x26; error.code !== &#x27;EACCES&#x27; ?
+          handleEvent(&#x27;unlink&#x27;) : addOrChange();
+      });
+    }
+    // correct for wrong events emitted
+    var wrongEventFlags = [
+      69888, 70400, 71424, 72704, 73472, 131328, 131840, 262912
+    ];
+    if (wrongEventFlags.indexOf(flags) !== -1 || info.event === &#x27;unknown&#x27;) {
+      if (typeof this.options.ignored === &#x27;function&#x27;) {
+        fs.stat(path, function(error, stats) {
+          if (checkIgnored(stats)) return;
+          stats ? addOrChange() : handleEvent(&#x27;unlink&#x27;);
+        });
+      } else {
+        checkFd();
+      }
+    } else {
+      switch (info.event) {
+      case &#x27;created&#x27;:
+      case &#x27;modified&#x27;:
+        return addOrChange();
+      case &#x27;deleted&#x27;:
+      case &#x27;moved&#x27;:
+        return checkFd();
+      }
+    }
+  }.bind(this);
+
+  var closer = setFSEventsListener(
+    watchPath,
+    realPath,
+    watchCallback,
+    this.emit.bind(this, &#x27;raw&#x27;)
+  );
+
+  this._emitReady();
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    emitAdd(wh.watchPath, stats);
+    this._emitReady();
+  }
+}.bind(this));
+
+if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
+  var initWatch = function(error, realPath) {
+    var closer = this.<span class="apidocCodeKeywordSpan">_watchWithFsEvents</span>(
+      wh.watchPath,
+      sysPath.resolve(realPath || wh.watchPath),
+      processPath,
+      wh.globFilter
+    );
+    if (closer) this._closers[path] = closer;
+  }.bind(this);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar.nodefs_handler" id="apidoc.module.chokidar.nodefs_handler">module chokidar.nodefs_handler</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler.nodefs_handler" id="apidoc.element.chokidar.nodefs_handler.nodefs_handler">
+        function <span class="apidocSignatureSpan">chokidar.</span>nodefs_handler
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NodeFsHandler() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.chokidar.nodefs_handler.prototype" id="apidoc.module.chokidar.nodefs_handler.prototype">module chokidar.nodefs_handler.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler.prototype._addToNodeFs" id="apidoc.element.chokidar.nodefs_handler.prototype._addToNodeFs">
+        function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_addToNodeFs
+        <span class="apidocSignatureSpan">(path, initialAdd, priorWh, depth, target, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addToNodeFs = function (path, initialAdd, priorWh, depth, target, callback) {
+  if (!callback) callback = Function.prototype;
+  var ready = this._emitReady;
+  if (this._isIgnored(path) || this.closed) {
+    ready();
+    return callback(null, false);
+  }
+
+  var wh = this._getWatchHelpers(path, depth);
+  if (!wh.hasGlob &#x26;&#x26; priorWh) {
+    wh.hasGlob = priorWh.hasGlob;
+    wh.globFilter = priorWh.globFilter;
+    wh.filterPath = priorWh.filterPath;
+    wh.filterDir = priorWh.filterDir;
+  }
+
+  // evaluate what is at the path we&#x27;re being asked to watch
+  fs[wh.statMethod](wh.watchPath, function(error, stats) {
+    if (this._handleError(error)) return callback(null, path);
+    if (this._isIgnored(wh.watchPath, stats)) {
+      ready();
+      return callback(null, false);
+    }
+
+    var initDir = function(dir, target) {
+      return this._handleDir(dir, stats, initialAdd, depth, target, wh, ready);
+    }.bind(this);
+
+    var closer;
+    if (stats.isDirectory()) {
+      closer = initDir(wh.watchPath, target);
+    } else if (stats.isSymbolicLink()) {
+      var parent = sysPath.dirname(wh.watchPath);
+      this._getWatchedDir(parent).add(wh.watchPath);
+      this._emit(&#x27;add&#x27;, wh.watchPath, stats);
+      closer = initDir(parent, path);
+
+      // preserve this symlink&#x27;s target path
+      fs.realpath(path, function(error, targetPath) {
+        this._symlinkPaths[sysPath.resolve(path)] = targetPath;
+        ready();
+      }.bind(this));
+    } else {
+      closer = this._handleFile(wh.watchPath, stats, initialAdd, ready);
+    }
+
+    if (closer) this._closers[path] = closer;
+    callback(null, false);
+  }.bind(this));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (!this._readyCount) this._readyCount = paths.length;
+  if (this.options.persistent) this._readyCount *= 2;
+  paths.forEach(this._addToFsEvents, this);
+} else {
+  if (!this._readyCount) this._readyCount = 0;
+  this._readyCount += paths.length;
+  asyncEach(paths, function(path, next) {
+    this.<span class="apidocCodeKeywordSpan">_addToNodeFs</span>(path, !_internal, 0, 0, _origAdd, function(err, res) {
+      if (res) this._emitReady();
+      next(err, res);
+    }.bind(this));
+  }.bind(this), function(error, results) {
+    results.forEach(function(item) {
+      if (!item) return;
+      this.add(sysPath.dirname(item), sysPath.basename(_origAdd || item));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler.prototype._handleDir" id="apidoc.element.chokidar.nodefs_handler.prototype._handleDir">
+        function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_handleDir
+        <span class="apidocSignatureSpan">(dir, stats, initialAdd, depth, target, wh, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleDir = function (dir, stats, initialAdd, depth, target, wh, callback) {
+  var parentDir = this._getWatchedDir(sysPath.dirname(dir));
+  var tracked = parentDir.has(sysPath.basename(dir));
+  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial) &#x26;&#x26; !target &#x26;&#x26; !tracked) {
+    if (!wh.hasGlob || wh.globFilter(dir)) this._emit(&#x27;addDir&#x27;, dir, stats);
+  }
+
+  // ensure dir is tracked (harmless if redundant)
+  parentDir.add(sysPath.basename(dir));
+  this._getWatchedDir(dir);
+
+  var read = function(directory, initialAdd, done) {
+    // Normalize the directory name on Windows
+    directory = sysPath.join(directory, &#x27;&#x27;);
+
+    if (!wh.hasGlob) {
+      var throttler = this._throttle(&#x27;readdir&#x27;, directory, 1000);
+      if (!throttler) return;
+    }
+
+    var previous = this._getWatchedDir(wh.path);
+    var current = [];
+
+    readdirp({
+      root: directory,
+      entryType: &#x27;all&#x27;,
+      fileFilter: wh.filterPath,
+      directoryFilter: wh.filterDir,
+      depth: 0,
+      lstat: true
+    }).on(&#x27;data&#x27;, function(entry) {
+      var item = entry.path;
+      var path = sysPath.join(directory, item);
+      current.push(item);
+
+      if (entry.stat.isSymbolicLink() &#x26;&#x26;
+        this._handleSymlink(entry, directory, path, item)) return;
+
+      // Files that present in current directory snapshot
+      // but absent in previous are added to watch list and
+      // emit `add` event.
+      if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+        this._readyCount++;
+
+        // ensure relativeness of path is preserved in case of watcher reuse
+        path = sysPath.join(dir, sysPath.relative(dir, path));
+
+        this._addToNodeFs(path, initialAdd, wh, depth + 1);
+      }
+    }.bind(this)).on(&#x27;end&#x27;, function() {
+      if (throttler) throttler.clear();
+      if (done) done();
+
+      // Files that absent in current directory snapshot
+      // but present in previous emit `remove` event
+      // and are removed from @watched[directory].
+      previous.children().filter(function(item) {
+        return item !== directory &#x26;&#x26;
+          current.indexOf(item) === -1 &#x26;&#x26;
+          // in case of intersecting globs;
+          // a path may have been filtered out of this readdir, but
+          // shouldn&#x27;t be removed because it matches a different glob
+          (!wh.hasGlob || wh.filterPath({
+            fullPath: sysPath.resolve(directory, item)
+          }));
+      }).forEach(function(item) {
+        this._remove(directory, item);
+      }, this);
+    }.bind(this)).on(&#x27;error&#x27;, this._handleError.bind(this));
+  }.bind(this);
+
+  var closer;
+
+  if (this.options.depth == null || depth &#x3c;= this.options.depth) {
+    if (!target) read(dir, initialAdd, callback);
+    closer = this._watchWithNodeFs(dir, function(dirPath, stats) {
+      // if current directory is removed, do nothing
+      if (stats &#x26;&#x26; stats.mtime.getTime() === 0) return;
+
+      read(dirPath, false);
+    });
+  } else {
+    callback();
+  }
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (this._handleError(error)) return callback(null, path);
+if (this._isIgnored(wh.watchPath, stats)) {
+  ready();
+  return callback(null, false);
+}
+
+var initDir = function(dir, target) {
+  return this.<span class="apidocCodeKeywordSpan">_handleDir</span>(dir, stats, initialAdd, depth, target, wh, ready);
+}.bind(this);
+
+var closer;
+if (stats.isDirectory()) {
+  closer = initDir(wh.watchPath, target);
+} else if (stats.isSymbolicLink()) {
+  var parent = sysPath.dirname(wh.watchPath);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler.prototype._handleFile" id="apidoc.element.chokidar.nodefs_handler.prototype._handleFile">
+        function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_handleFile
+        <span class="apidocSignatureSpan">(file, stats, initialAdd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleFile = function (file, stats, initialAdd, callback) {
+  var dirname = sysPath.dirname(file);
+  var basename = sysPath.basename(file);
+  var parent = this._getWatchedDir(dirname);
+
+  // if the file is already being watched, do nothing
+  if (parent.has(basename)) return callback();
+
+  // kick off the watcher
+  var closer = this._watchWithNodeFs(file, function(path, newStats) {
+    if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
+    if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+      fs.stat(file, function(error, newStats) {
+        // Fix issues where mtime is null but file is still present
+        if (error) {
+          this._remove(dirname, basename);
+        } else {
+          this._emit(&#x27;change&#x27;, file, newStats);
+        }
+      }.bind(this));
+    // add is about to be emitted if file not already tracked in parent
+    } else if (parent.has(basename)) {
+      this._emit(&#x27;change&#x27;, file, newStats);
+    }
+  }.bind(this));
+
+  // emit an add event if we&#x27;re supposed to
+  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial)) {
+    if (!this._throttle(&#x27;add&#x27;, file, 0)) return;
+    this._emit(&#x27;add&#x27;, file, stats);
+  }
+
+  if (callback) callback();
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+      // preserve this symlink&#x27;s target path
+      fs.realpath(path, function(error, targetPath) {
+        this._symlinkPaths[sysPath.resolve(path)] = targetPath;
+        ready();
+      }.bind(this));
+    } else {
+      closer = this.<span class="apidocCodeKeywordSpan">_handleFile</span>(wh.watchPath, stats, initialAdd, ready);
+    }
+
+    if (closer) this._closers[path] = closer;
+    callback(null, false);
+  }.bind(this));
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler.prototype._handleSymlink" id="apidoc.element.chokidar.nodefs_handler.prototype._handleSymlink">
+        function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_handleSymlink
+        <span class="apidocSignatureSpan">(entry, directory, path, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleSymlink = function (entry, directory, path, item) {
+  var full = entry.fullPath;
+  var dir = this._getWatchedDir(directory);
+
+  if (!this.options.followSymlinks) {
+    // watch symlink directly (don&#x27;t follow) and detect changes
+    this._readyCount++;
+    fs.realpath(path, function(error, linkPath) {
+      if (dir.has(item)) {
+        if (this._symlinkPaths[full] !== linkPath) {
+          this._symlinkPaths[full] = linkPath;
+          this._emit(&#x27;change&#x27;, path, entry.stat);
+        }
+      } else {
+        dir.add(item);
+        this._symlinkPaths[full] = linkPath;
+        this._emit(&#x27;add&#x27;, path, entry.stat);
+      }
+      this._emitReady();
+    }.bind(this));
+    return true;
+  }
+
+  // don&#x27;t follow the same symlink more than once
+  if (this._symlinkPaths[full]) return true;
+  else this._symlinkPaths[full] = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+lstat: true
+    }).on(&#x27;data&#x27;, function(entry) {
+var item = entry.path;
+var path = sysPath.join(directory, item);
+current.push(item);
+
+if (entry.stat.isSymbolicLink() &#x26;&#x26;
+  this.<span class="apidocCodeKeywordSpan">_handleSymlink</span>(entry, directory, path, item)) return;
+
+// Files that present in current directory snapshot
+// but absent in previous are added to watch list and
+// emit `add` event.
+if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+  this._readyCount++;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.chokidar.nodefs_handler.prototype._watchWithNodeFs" id="apidoc.element.chokidar.nodefs_handler.prototype._watchWithNodeFs">
+        function <span class="apidocSignatureSpan">chokidar.nodefs_handler.prototype.</span>_watchWithNodeFs
+        <span class="apidocSignatureSpan">(path, listener)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_watchWithNodeFs = function (path, listener) {
+  var directory = sysPath.dirname(path);
+  var basename = sysPath.basename(path);
+  var parent = this._getWatchedDir(directory);
+  parent.add(basename);
+  var absolutePath = sysPath.resolve(path);
+  var options = {persistent: this.options.persistent};
+  if (!listener) listener = Function.prototype; // empty function
+
+  var closer;
+  if (this.options.usePolling) {
+    options.interval = this.enableBinaryInterval &#x26;&#x26; isBinaryPath(basename) ?
+      this.options.binaryInterval : this.options.interval;
+    closer = setFsWatchFileListener(path, absolutePath, options, {
+      listener: listener,
+      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+    });
+  } else {
+    closer = setFsWatchListener(path, absolutePath, options, {
+      listener: listener,
+      errHandler: this._handleError.bind(this),
+      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+    });
+  }
+  return closer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var basename = sysPath.basename(file);
+var parent = this._getWatchedDir(dirname);
+
+// if the file is already being watched, do nothing
+if (parent.has(basename)) return callback();
+
+// kick off the watcher
+var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(file, function(path, newStats) {
+  if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
+  if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+    fs.stat(file, function(error, newStats) {
+      // Fix issues where mtime is null but file is still present
+      if (error) {
+        this._remove(dirname, basename);
+      } else {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
