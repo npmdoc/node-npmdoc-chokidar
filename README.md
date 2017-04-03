@@ -1,11 +1,13 @@
-# api documentation for  [chokidar (v1.6.1)](https://github.com/paulmillr/chokidar)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chokidar.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chokidar)
+# api documentation for  [chokidar (v1.6.1)](https://github.com/paulmillr/chokidar)  [![npm package](https://img.shields.io/npm/v/npmdoc-chokidar.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-chokidar) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chokidar.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chokidar)
 #### A neat wrapper around node.js fs.watch / fs.watchFile / fsevents.
 
 [![NPM](https://nodei.co/npm/chokidar.png?downloads=true)](https://www.npmjs.com/package/chokidar)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-chokidar/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-chokidar_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-chokidar/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-chokidar/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-chokidar_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-chokidar/build..beta..travis-ci.org/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-chokidar/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-chokidar/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-chokidar/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
