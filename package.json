@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "chokidar",
-    "description": "api documentation for [chokidar (v1.6.1)](https://github.com/paulmillr/chokidar) [![npm package](https://img.shields.io/npm/v/npmdoc-chokidar.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-chokidar) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chokidar.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chokidar)",
+    "description": "#### basic api documentation for  [chokidar (v1.6.1)](https://github.com/paulmillr/chokidar)  [![npm package](https://img.shields.io/npm/v/npmdoc-chokidar.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-chokidar) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chokidar.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chokidar)",
     "devDependencies": {
         "chokidar": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
