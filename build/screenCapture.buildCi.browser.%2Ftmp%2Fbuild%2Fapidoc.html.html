@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/paulmillr/chokidar"
-
-    >chokidar (v1.6.1)</a>
+    <a href="https://github.com/paulmillr/chokidar">chokidar (v1.6.1)</a>
 </h1>
 <h4>A neat wrapper around node.js fs.watch / fs.watchFile / fsevents.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.chokidar">module chokidar</a><ol>
 
@@ -478,7 +471,7 @@
   this._watched = Object.create(null);
   this._closers = Object.create(null);
   this._ignoredPaths = Object.create(null);
-  Object.defineProperty(this, &#x27;_globIgnored&#x27;, {
+  Object.defineProperty(this, '_globIgnored', {
     get: function() { return Object.keys(this._ignoredPaths); }
   });
   this.closed = false;
@@ -490,23 +483,23 @@
   }
 
   // Set up default options.
-  if (undef(&#x27;persistent&#x27;)) opts.persistent = true;
-  if (undef(&#x27;ignoreInitial&#x27;)) opts.ignoreInitial = false;
-  if (undef(&#x27;ignorePermissionErrors&#x27;)) opts.ignorePermissionErrors = false;
-  if (undef(&#x27;interval&#x27;)) opts.interval = 100;
-  if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+  if (undef('persistent')) opts.persistent = true;
+  if (undef('ignoreInitial')) opts.ignoreInitial = false;
+  if (undef('ignorePermissionErrors')) opts.ignorePermissionErrors = false;
+  if (undef('interval')) opts.interval = 100;
+  if (undef('binaryInterval')) opts.binaryInterval = 300;
   this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
 
-  // Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
-  if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+  // Enable fsevents on OS X when polling isn't explicitly enabled.
+  if (undef('useFsEvents')) opts.useFsEvents = !opts.usePolling;
 
-  // If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+  // If we can't use fsevents, ensure the options reflect it's disabled.
   if (!FsEventsHandler.canUse()) opts.useFsEvents = false;
 
   // Use polling on Mac if not using fsevents.
   // Other platforms use non-polling fs.watch.
-  if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
-    opts.usePolling = process.platform === &#x27;darwin&#x27;;
+  if (undef('usePolling') &amp;&amp; !opts.useFsEvents) {
+    opts.usePolling = process.platform === 'darwin';
   }
 
   // Global override (useful for end-developers that need to force polling for all
@@ -515,9 +508,9 @@
   if (envPoll !== undefined) {
     var envLower = envPoll.toLowerCase();
 
-    if (envLower === &#x27;false&#x27; || envLower === &#x27;0&#x27;) {
+    if (envLower === 'false' || envLower === '0') {
       opts.usePolling = false;
-    } else if (envLower === &#x27;true&#x27; || envLower === &#x27;1&#x27;) {
+    } else if (envLower === 'true' || envLower === '1') {
       opts.usePolling = true;
     } else {
       opts.usePolling = !!envLower
@@ -525,12 +518,12 @@
   }
 
   // Editor atomic write normalization enabled by default with fs.watch
-  if (undef(&#x27;atomic&#x27;)) opts.atomic = !opts.usePolling &#x26;&#x26; !opts.useFsEvents;
+  if (undef('atomic')) opts.atomic = !opts.usePolling &amp;&amp; !opts.useFsEvents;
   if (opts.atomic) this._pendingUnlinks = Object.create(null);
 
-  if (undef(&#x27;followSymlinks&#x27;)) opts.followSymlinks = true;
+  if (undef('followSymlinks')) opts.followSymlinks = true;
 
-  if (undef(&#x27;awaitWriteFinish&#x27;)) opts.awaitWriteFinish = false;
+  if (undef('awaitWriteFinish')) opts.awaitWriteFinish = false;
   if (opts.awaitWriteFinish === true) opts.awaitWriteFinish = {};
   var awf = opts.awaitWriteFinish;
   if (awf) {
@@ -547,17 +540,17 @@
 
   var readyCalls = 0;
   this._emitReady = function() {
-    if (++readyCalls &#x3e;= this._readyCount) {
+    if (++readyCalls &gt;= this._readyCount) {
       this._emitReady = Function.prototype;
       this._readyEmitted = true;
       // use process.nextTick to allow time for listener to be bound
-      process.nextTick(this.emit.bind(this, &#x27;ready&#x27;));
+      process.nextTick(this.emit.bind(this, 'ready'));
     }
   }.bind(this);
 
   this.options = opts;
 
-  // You’re frozen when your heart’s not open.
+  // Youâ€™re frozen when your heartâ€™s not open.
   Object.freeze(opts);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -605,8 +598,8 @@
 * Fix some `cwd` option behavior on Windows
 * `awaitWriteFinish` and `cwd` are now compatible
 * Fix some race conditions.
-* #379: Recreating deleted directory doesn&#x27;t trigger event
-* When adding a previously-deleted file, emit &#x27;add&#x27;, not &#x27;change&#x27;
+* #379: Recreating deleted directory doesn't trigger event
+* When adding a previously-deleted file, emit 'add', not 'change'
 
 # Chokidar 1.2.0 (Oct 1, 2015)
 * Allow nested arrays of paths to be provided to `.<span class="apidocCodeKeywordSpan">watch</span>()` and `.add()`
@@ -650,7 +643,7 @@
   this._watched = Object.create(null);
   this._closers = Object.create(null);
   this._ignoredPaths = Object.create(null);
-  Object.defineProperty(this, &#x27;_globIgnored&#x27;, {
+  Object.defineProperty(this, '_globIgnored', {
     get: function() { return Object.keys(this._ignoredPaths); }
   });
   this.closed = false;
@@ -662,23 +655,23 @@
   }
 
   // Set up default options.
-  if (undef(&#x27;persistent&#x27;)) opts.persistent = true;
-  if (undef(&#x27;ignoreInitial&#x27;)) opts.ignoreInitial = false;
-  if (undef(&#x27;ignorePermissionErrors&#x27;)) opts.ignorePermissionErrors = false;
-  if (undef(&#x27;interval&#x27;)) opts.interval = 100;
-  if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+  if (undef('persistent')) opts.persistent = true;
+  if (undef('ignoreInitial')) opts.ignoreInitial = false;
+  if (undef('ignorePermissionErrors')) opts.ignorePermissionErrors = false;
+  if (undef('interval')) opts.interval = 100;
+  if (undef('binaryInterval')) opts.binaryInterval = 300;
   this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
 
-  // Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
-  if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+  // Enable fsevents on OS X when polling isn't explicitly enabled.
+  if (undef('useFsEvents')) opts.useFsEvents = !opts.usePolling;
 
-  // If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+  // If we can't use fsevents, ensure the options reflect it's disabled.
   if (!FsEventsHandler.canUse()) opts.useFsEvents = false;
 
   // Use polling on Mac if not using fsevents.
   // Other platforms use non-polling fs.watch.
-  if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
-    opts.usePolling = process.platform === &#x27;darwin&#x27;;
+  if (undef('usePolling') &amp;&amp; !opts.useFsEvents) {
+    opts.usePolling = process.platform === 'darwin';
   }
 
   // Global override (useful for end-developers that need to force polling for all
@@ -687,9 +680,9 @@
   if (envPoll !== undefined) {
     var envLower = envPoll.toLowerCase();
 
-    if (envLower === &#x27;false&#x27; || envLower === &#x27;0&#x27;) {
+    if (envLower === 'false' || envLower === '0') {
       opts.usePolling = false;
-    } else if (envLower === &#x27;true&#x27; || envLower === &#x27;1&#x27;) {
+    } else if (envLower === 'true' || envLower === '1') {
       opts.usePolling = true;
     } else {
       opts.usePolling = !!envLower
@@ -697,12 +690,12 @@
   }
 
   // Editor atomic write normalization enabled by default with fs.watch
-  if (undef(&#x27;atomic&#x27;)) opts.atomic = !opts.usePolling &#x26;&#x26; !opts.useFsEvents;
+  if (undef('atomic')) opts.atomic = !opts.usePolling &amp;&amp; !opts.useFsEvents;
   if (opts.atomic) this._pendingUnlinks = Object.create(null);
 
-  if (undef(&#x27;followSymlinks&#x27;)) opts.followSymlinks = true;
+  if (undef('followSymlinks')) opts.followSymlinks = true;
 
-  if (undef(&#x27;awaitWriteFinish&#x27;)) opts.awaitWriteFinish = false;
+  if (undef('awaitWriteFinish')) opts.awaitWriteFinish = false;
   if (opts.awaitWriteFinish === true) opts.awaitWriteFinish = {};
   var awf = opts.awaitWriteFinish;
   if (awf) {
@@ -719,17 +712,17 @@
 
   var readyCalls = 0;
   this._emitReady = function() {
-    if (++readyCalls &#x3e;= this._readyCount) {
+    if (++readyCalls &gt;= this._readyCount) {
       this._emitReady = Function.prototype;
       this._readyEmitted = true;
       // use process.nextTick to allow time for listener to be bound
-      process.nextTick(this.emit.bind(this, &#x27;ready&#x27;));
+      process.nextTick(this.emit.bind(this, 'ready'));
     }
   }.bind(this);
 
   this.options = opts;
 
-  // You’re frozen when your heart’s not open.
+  // Youâ€™re frozen when your heartâ€™s not open.
   Object.freeze(opts);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -773,14 +766,14 @@
   }
 
   var wh = this._getWatchHelpers(path, depth);
-  if (!wh.hasGlob &#x26;&#x26; priorWh) {
+  if (!wh.hasGlob &amp;&amp; priorWh) {
     wh.hasGlob = priorWh.hasGlob;
     wh.globFilter = priorWh.globFilter;
     wh.filterPath = priorWh.filterPath;
     wh.filterDir = priorWh.filterDir;
   }
 
-  // evaluate what is at the path we&#x27;re being asked to watch
+  // evaluate what is at the path we're being asked to watch
   fs[wh.statMethod](wh.watchPath, function(error, stats) {
     if (this._handleError(error)) return callback(null, path);
     if (this._isIgnored(wh.watchPath, stats)) {
@@ -798,10 +791,10 @@
     } else if (stats.isSymbolicLink()) {
       var parent = sysPath.dirname(wh.watchPath);
       this._getWatchedDir(parent).add(wh.watchPath);
-      this._emit(&#x27;add&#x27;, wh.watchPath, stats);
+      this._emit('add', wh.watchPath, stats);
       closer = initDir(parent, path);
 
-      // preserve this symlink&#x27;s target path
+      // preserve this symlink's target path
       fs.realpath(path, function(error, targetPath) {
         this._symlinkPaths[sysPath.resolve(path)] = targetPath;
         ready();
@@ -846,7 +839,7 @@
   var timeoutHandler;
 
   var fullPath = path;
-  if (this.options.cwd &#x26;&#x26; !isAbsolute(path)) {
+  if (this.options.cwd &amp;&amp; !isAbsolute(path)) {
     fullPath = sysPath.join(this.options.cwd, path);
   }
 
@@ -855,17 +848,17 @@
   var awaitWriteFinish = (function (prevStat) {
     fs.stat(fullPath, function(err, curStat) {
       if (err) {
-        if (err.code !== &#x27;ENOENT&#x27;) awfEmit(err);
+        if (err.code !== 'ENOENT') awfEmit(err);
         return;
       }
 
       var now = new Date();
 
-      if (prevStat &#x26;&#x26; curStat.size != prevStat.size) {
+      if (prevStat &amp;&amp; curStat.size != prevStat.size) {
         this._pendingWrites[path].lastChange = now;
       }
 
-      if (now - this._pendingWrites[path].lastChange &#x3e;= threshold) {
+      if (now - this._pendingWrites[path].lastChange &gt;= threshold) {
         delete this._pendingWrites[path];
         awfEmit(null, curStat);
       } else {
@@ -904,8 +897,8 @@
   return this;
 }
 
-if (event === &#x27;change&#x27;) {
-  if (!this._throttle(&#x27;change&#x27;, path, 50)) return this;
+if (event === 'change') {
+  if (!this._throttle('change', path, 50)) return this;
 }
 ...</pre></li>
     </ul>
@@ -928,8 +921,8 @@ if (event === &#x27;change&#x27;) {
     <li>example usage<pre class="apidocCodePre">...
 delete this._watched[path];
 delete this._watched[fullPath];
-var eventName = isDirectory ? &#x27;unlinkDir&#x27; : &#x27;unlink&#x27;;
-if (wasTracked &#x26;&#x26; !this._isIgnored(path)) this._emit(eventName, path);
+var eventName = isDirectory ? 'unlinkDir' : 'unlink';
+if (wasTracked &amp;&amp; !this._isIgnored(path)) this._emit(eventName, path);
 
 // Avoid conflicts if we later create another file with the same name
 if (!this.options.useFsEvents) {
@@ -961,44 +954,44 @@ delete this._closers[path];
   else if (val1 !== undefined) args.push(val1);
 
   var awf = this.options.awaitWriteFinish;
-  if (awf &#x26;&#x26; this._pendingWrites[path]) {
+  if (awf &amp;&amp; this._pendingWrites[path]) {
     this._pendingWrites[path].lastChange = new Date();
     return this;
   }
 
   if (this.options.atomic) {
-    if (event === &#x27;unlink&#x27;) {
+    if (event === 'unlink') {
       this._pendingUnlinks[path] = args;
       setTimeout(function() {
         Object.keys(this._pendingUnlinks).forEach(function(path) {
           this.emit.apply(this, this._pendingUnlinks[path]);
-          this.emit.apply(this, [&#x27;all&#x27;].concat(this._pendingUnlinks[path]));
+          this.emit.apply(this, ['all'].concat(this._pendingUnlinks[path]));
           delete this._pendingUnlinks[path];
         }.bind(this));
-      }.bind(this), typeof this.options.atomic === &#x22;number&#x22;
+      }.bind(this), typeof this.options.atomic === "number"
         ? this.options.atomic
         : 100);
       return this;
-    } else if (event === &#x27;add&#x27; &#x26;&#x26; this._pendingUnlinks[path]) {
-      event = args[0] = &#x27;change&#x27;;
+    } else if (event === 'add' &amp;&amp; this._pendingUnlinks[path]) {
+      event = args[0] = 'change';
       delete this._pendingUnlinks[path];
     }
   }
 
   var emitEvent = function() {
     this.emit.apply(this, args);
-    if (event !== &#x27;error&#x27;) this.emit.apply(this, [&#x27;all&#x27;].concat(args));
+    if (event !== 'error') this.emit.apply(this, ['all'].concat(args));
   }.bind(this);
 
-  if (awf &#x26;&#x26; (event === &#x27;add&#x27; || event === &#x27;change&#x27;) &#x26;&#x26; this._readyEmitted) {
+  if (awf &amp;&amp; (event === 'add' || event === 'change') &amp;&amp; this._readyEmitted) {
     var awfEmit = function(err, stats) {
       if (err) {
-        event = args[0] = &#x27;error&#x27;;
+        event = args[0] = 'error';
         args[1] = err;
         emitEvent();
       } else if (stats) {
-        // if stats doesn&#x27;t exist the file must have been deleted
-        if (args.length &#x3e; 2) {
+        // if stats doesn't exist the file must have been deleted
+        if (args.length &gt; 2) {
           args[2] = stats;
         } else {
           args.push(stats);
@@ -1011,17 +1004,17 @@ delete this._closers[path];
     return this;
   }
 
-  if (event === &#x27;change&#x27;) {
-    if (!this._throttle(&#x27;change&#x27;, path, 50)) return this;
+  if (event === 'change') {
+    if (!this._throttle('change', path, 50)) return this;
   }
 
   if (
-    this.options.alwaysStat &#x26;&#x26; val1 === undefined &#x26;&#x26;
-    (event === &#x27;add&#x27; || event === &#x27;addDir&#x27; || event === &#x27;change&#x27;)
+    this.options.alwaysStat &amp;&amp; val1 === undefined &amp;&amp;
+    (event === 'add' || event === 'addDir' || event === 'change')
   ) {
     var fullPath = this.options.cwd ? sysPath.join(this.options.cwd, path) : path;
     fs.stat(fullPath, function(error, stats) {
-      // Suppress event when fs.stat fails, to avoid sending undefined &#x27;stat&#x27;
+      // Suppress event when fs.stat fails, to avoid sending undefined 'stat'
       if (error || !stats) return;
 
       args.push(stats);
@@ -1040,8 +1033,8 @@ delete this._closers[path];
   // or a bogus entry to a file, in either case we have to remove it
   delete this._watched[path];
   delete this._watched[fullPath];
-  var eventName = isDirectory ? &#x27;unlinkDir&#x27; : &#x27;unlink&#x27;;
-  if (wasTracked &#x26;&#x26; !this._isIgnored(path)) this.<span class="apidocCodeKeywordSpan">_emit</span>(eventName, path);
+  var eventName = isDirectory ? 'unlinkDir' : 'unlink';
+  if (wasTracked &amp;&amp; !this._isIgnored(path)) this.<span class="apidocCodeKeywordSpan">_emit</span>(eventName, path);
 
   // Avoid conflicts if we later create another file with the same name
   if (!this.options.useFsEvents) {
@@ -1061,17 +1054,17 @@ delete this._closers[path];
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_getWatchHelpers = function (path, depth) {
-  path = path.replace(replacerRe, &#x27;&#x27;);
+  path = path.replace(replacerRe, '');
   var watchPath = depth || !isGlob(path) ? path : globParent(path);
   var fullWatchPath = sysPath.resolve(watchPath);
   var hasGlob = watchPath !== path;
   var globFilter = hasGlob ? anymatch(path) : false;
   var follow = this.options.followSymlinks;
-  var globSymlink = hasGlob &#x26;&#x26; follow ? null : false;
+  var globSymlink = hasGlob &amp;&amp; follow ? null : false;
 
   var checkGlobSymlink = function(entry) {
     // only need to resolve once
-    // first entry should always have entry.parentDir === &#x27;&#x27;
+    // first entry should always have entry.parentDir === ''
     if (globSymlink == null) {
       globSymlink = entry.fullParentDir === fullWatchPath ? false : {
         realPath: entry.fullParentDir,
@@ -1093,10 +1086,10 @@ delete this._closers[path];
   };
 
   var filterPath = function(entry) {
-    if (entry.stat &#x26;&#x26; entry.stat.isSymbolicLink()) return filterDir(entry);
+    if (entry.stat &amp;&amp; entry.stat.isSymbolicLink()) return filterDir(entry);
     var resolvedPath = entryPath(entry);
-    return (!hasGlob || globFilter(resolvedPath)) &#x26;&#x26;
-      this._isntIgnored(resolvedPath, entry.stat) &#x26;&#x26;
+    return (!hasGlob || globFilter(resolvedPath)) &amp;&amp;
+      this._isntIgnored(resolvedPath, entry.stat) &amp;&amp;
       (this.options.ignorePermissionErrors ||
         this._hasReadPermissions(entry.stat));
   }.bind(this);
@@ -1108,7 +1101,7 @@ delete this._closers[path];
   };
 
   var dirParts = getDirParts(path);
-  if (dirParts &#x26;&#x26; dirParts.length &#x3e; 1) dirParts.pop();
+  if (dirParts &amp;&amp; dirParts.length &gt; 1) dirParts.pop();
   var unmatchedGlob;
 
   var filterDir = function(entry) {
@@ -1116,16 +1109,16 @@ delete this._closers[path];
       var entryParts = getDirParts(checkGlobSymlink(entry));
       var globstar = false;
       unmatchedGlob = !dirParts.every(function(part, i) {
-        if (part === &#x27;**&#x27;) globstar = true;
+        if (part === '**') globstar = true;
         return globstar || !entryParts[i] || anymatch(part, entryParts[i]);
       });
     }
-    return !unmatchedGlob &#x26;&#x26; this._isntIgnored(entryPath(entry), entry.stat);
+    return !unmatchedGlob &amp;&amp; this._isntIgnored(entryPath(entry), entry.stat);
   }.bind(this);
 
   return {
     followSymlinks: follow,
-    statMethod: follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;,
+    statMethod: follow ? 'stat' : 'lstat',
     path: path,
     watchPath: watchPath,
     entryPath: entryPath,
@@ -1139,13 +1132,13 @@ delete this._closers[path];
   dirObj.add(base);
 
   if (!this.options.ignoreInitial || forceAdd === true) {
-    this._emit(isDir ? &#x27;addDir&#x27; : &#x27;add&#x27;, pp, stats);
+    this._emit(isDir ? 'addDir' : 'add', pp, stats);
   }
 }.bind(this);
 
 var wh = this.<span class="apidocCodeKeywordSpan">_getWatchHelpers</span>(path);
 
-// evaluate what is at the path we&#x27;re being asked to watch
+// evaluate what is at the path we're being asked to watch
 fs[wh.statMethod](wh.watchPath, function(error, stats) {
   if (this._handleError(error) || this._isIgnored(wh.watchPath, stats)) {
     this._emitReady();
@@ -1169,7 +1162,7 @@ fs[wh.statMethod](wh.watchPath, function(error, stats) {
   if (!(dir in this._watched)) this._watched[dir] = {
     _items: Object.create(null),
     add: function(item) {
-      if (item !== &#x27;.&#x27;) this._items[item] = true;
+      if (item !== '.') this._items[item] = true;
     },
     remove: function(item) {
       delete this._items[item];
@@ -1186,7 +1179,7 @@ fs[wh.statMethod](wh.watchPath, function(error, stats) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 var watchedDirs = Object.keys(this._watched);
-if (!isDirectory &#x26;&#x26; !this.options.useFsEvents &#x26;&#x26; watchedDirs.length === 1) {
+if (!isDirectory &amp;&amp; !this.options.useFsEvents &amp;&amp; watchedDirs.length === 1) {
   this.add(directory, item, true);
 }
 
@@ -1215,8 +1208,8 @@ nestedDirectoryChildren.forEach(function(nestedItem) {
     <li>description and source-code<pre class="apidocCodePre">_handleDir = function (dir, stats, initialAdd, depth, target, wh, callback) {
   var parentDir = this._getWatchedDir(sysPath.dirname(dir));
   var tracked = parentDir.has(sysPath.basename(dir));
-  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial) &#x26;&#x26; !target &#x26;&#x26; !tracked) {
-    if (!wh.hasGlob || wh.globFilter(dir)) this._emit(&#x27;addDir&#x27;, dir, stats);
+  if (!(initialAdd &amp;&amp; this.options.ignoreInitial) &amp;&amp; !target &amp;&amp; !tracked) {
+    if (!wh.hasGlob || wh.globFilter(dir)) this._emit('addDir', dir, stats);
   }
 
   // ensure dir is tracked (harmless if redundant)
@@ -1225,10 +1218,10 @@ nestedDirectoryChildren.forEach(function(nestedItem) {
 
   var read = function(directory, initialAdd, done) {
     // Normalize the directory name on Windows
-    directory = sysPath.join(directory, &#x27;&#x27;);
+    directory = sysPath.join(directory, '');
 
     if (!wh.hasGlob) {
-      var throttler = this._throttle(&#x27;readdir&#x27;, directory, 1000);
+      var throttler = this._throttle('readdir', directory, 1000);
       if (!throttler) return;
     }
 
@@ -1237,23 +1230,23 @@ nestedDirectoryChildren.forEach(function(nestedItem) {
 
     readdirp({
       root: directory,
-      entryType: &#x27;all&#x27;,
+      entryType: 'all',
       fileFilter: wh.filterPath,
       directoryFilter: wh.filterDir,
       depth: 0,
       lstat: true
-    }).on(&#x27;data&#x27;, function(entry) {
+    }).on('data', function(entry) {
       var item = entry.path;
       var path = sysPath.join(directory, item);
       current.push(item);
 
-      if (entry.stat.isSymbolicLink() &#x26;&#x26;
+      if (entry.stat.isSymbolicLink() &amp;&amp;
         this._handleSymlink(entry, directory, path, item)) return;
 
       // Files that present in current directory snapshot
       // but absent in previous are added to watch list and
       // emit `add` event.
-      if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+      if (item === target || !target &amp;&amp; !previous.has(item)) {
         this._readyCount++;
 
         // ensure relativeness of path is preserved in case of watcher reuse
@@ -1261,7 +1254,7 @@ nestedDirectoryChildren.forEach(function(nestedItem) {
 
         this._addToNodeFs(path, initialAdd, wh, depth + 1);
       }
-    }.bind(this)).on(&#x27;end&#x27;, function() {
+    }.bind(this)).on('end', function() {
       if (throttler) throttler.clear();
       if (done) done();
 
@@ -1269,27 +1262,27 @@ nestedDirectoryChildren.forEach(function(nestedItem) {
       // but present in previous emit `remove` event
       // and are removed from @watched[directory].
       previous.children().filter(function(item) {
-        return item !== directory &#x26;&#x26;
-          current.indexOf(item) === -1 &#x26;&#x26;
+        return item !== directory &amp;&amp;
+          current.indexOf(item) === -1 &amp;&amp;
           // in case of intersecting globs;
           // a path may have been filtered out of this readdir, but
-          // shouldn&#x27;t be removed because it matches a different glob
+          // shouldn't be removed because it matches a different glob
           (!wh.hasGlob || wh.filterPath({
             fullPath: sysPath.resolve(directory, item)
           }));
       }).forEach(function(item) {
         this._remove(directory, item);
       }, this);
-    }.bind(this)).on(&#x27;error&#x27;, this._handleError.bind(this));
+    }.bind(this)).on('error', this._handleError.bind(this));
   }.bind(this);
 
   var closer;
 
-  if (this.options.depth == null || depth &#x3c;= this.options.depth) {
+  if (this.options.depth == null || depth &lt;= this.options.depth) {
     if (!target) read(dir, initialAdd, callback);
     closer = this._watchWithNodeFs(dir, function(dirPath, stats) {
       // if current directory is removed, do nothing
-      if (stats &#x26;&#x26; stats.mtime.getTime() === 0) return;
+      if (stats &amp;&amp; stats.mtime.getTime() === 0) return;
 
       read(dirPath, false);
     });
@@ -1327,17 +1320,17 @@ if (stats.isDirectory()) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_handleError = function (error) {
-  var code = error &#x26;&#x26; error.code;
+  var code = error &amp;&amp; error.code;
   var ipe = this.options.ignorePermissionErrors;
-  if (error &#x26;&#x26;
-    code !== &#x27;ENOENT&#x27; &#x26;&#x26;
-    code !== &#x27;ENOTDIR&#x27; &#x26;&#x26;
-    (!ipe || (code !== &#x27;EPERM&#x27; &#x26;&#x26; code !== &#x27;EACCES&#x27;))
-  ) this.emit(&#x27;error&#x27;, error);
+  if (error &amp;&amp;
+    code !== 'ENOENT' &amp;&amp;
+    code !== 'ENOTDIR' &amp;&amp;
+    (!ipe || (code !== 'EPERM' &amp;&amp; code !== 'EACCES'))
+  ) this.emit('error', error);
   return error || this.closed;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // don&#x27;t follow the same symlink more than once
+  // don't follow the same symlink more than once
   if (this._symlinkPaths[fullPath]) return;
   else this._symlinkPaths[fullPath] = true;
 
@@ -1351,7 +1344,7 @@ if (this.<span class="apidocCodeKeywordSpan">_handleError</span>(error) || this.
 this._readyCount++;
 
 // add the linkTarget for watching with a wrapper for transform
-// that causes emitted paths to incorporate the link&#x27;s path
+// that causes emitted paths to incorporate the link's path
 ...</pre></li>
     </ul>
 
@@ -1374,26 +1367,26 @@ this._readyCount++;
 
   // kick off the watcher
   var closer = this._watchWithNodeFs(file, function(path, newStats) {
-    if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
-    if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+    if (!this._throttle('watch', file, 5)) return;
+    if (!newStats || newStats &amp;&amp; newStats.mtime.getTime() === 0) {
       fs.stat(file, function(error, newStats) {
         // Fix issues where mtime is null but file is still present
         if (error) {
           this._remove(dirname, basename);
         } else {
-          this._emit(&#x27;change&#x27;, file, newStats);
+          this._emit('change', file, newStats);
         }
       }.bind(this));
     // add is about to be emitted if file not already tracked in parent
     } else if (parent.has(basename)) {
-      this._emit(&#x27;change&#x27;, file, newStats);
+      this._emit('change', file, newStats);
     }
   }.bind(this));
 
-  // emit an add event if we&#x27;re supposed to
-  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial)) {
-    if (!this._throttle(&#x27;add&#x27;, file, 0)) return;
-    this._emit(&#x27;add&#x27;, file, stats);
+  // emit an add event if we're supposed to
+  if (!(initialAdd &amp;&amp; this.options.ignoreInitial)) {
+    if (!this._throttle('add', file, 0)) return;
+    this._emit('add', file, stats);
   }
 
   if (callback) callback();
@@ -1401,7 +1394,7 @@ this._readyCount++;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-      // preserve this symlink&#x27;s target path
+      // preserve this symlink's target path
       fs.realpath(path, function(error, targetPath) {
         this._symlinkPaths[sysPath.resolve(path)] = targetPath;
         ready();
@@ -1431,42 +1424,42 @@ this._readyCount++;
   var dir = this._getWatchedDir(directory);
 
   if (!this.options.followSymlinks) {
-    // watch symlink directly (don&#x27;t follow) and detect changes
+    // watch symlink directly (don't follow) and detect changes
     this._readyCount++;
     fs.realpath(path, function(error, linkPath) {
       if (dir.has(item)) {
         if (this._symlinkPaths[full] !== linkPath) {
           this._symlinkPaths[full] = linkPath;
-          this._emit(&#x27;change&#x27;, path, entry.stat);
+          this._emit('change', path, entry.stat);
         }
       } else {
         dir.add(item);
         this._symlinkPaths[full] = linkPath;
-        this._emit(&#x27;add&#x27;, path, entry.stat);
+        this._emit('add', path, entry.stat);
       }
       this._emitReady();
     }.bind(this));
     return true;
   }
 
-  // don&#x27;t follow the same symlink more than once
+  // don't follow the same symlink more than once
   if (this._symlinkPaths[full]) return true;
   else this._symlinkPaths[full] = true;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 lstat: true
-    }).on(&#x27;data&#x27;, function(entry) {
+    }).on('data', function(entry) {
 var item = entry.path;
 var path = sysPath.join(directory, item);
 current.push(item);
 
-if (entry.stat.isSymbolicLink() &#x26;&#x26;
+if (entry.stat.isSymbolicLink() &amp;&amp;
   this.<span class="apidocCodeKeywordSpan">_handleSymlink</span>(entry, directory, path, item)) return;
 
 // Files that present in current directory snapshot
 // but absent in previous are added to watch list and
 // emit `add` event.
-if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+if (item === target || !target &amp;&amp; !previous.has(item)) {
   this._readyCount++;
 ...</pre></li>
     </ul>
@@ -1481,15 +1474,15 @@ if (item === target || !target &#x26;&#x26; !previous.has(item)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_hasReadPermissions = function (stats) {
-  return Boolean(4 &#x26; parseInt(((stats &#x26;&#x26; stats.mode) &#x26; 0x1ff).toString(8)[0], 10));
+  return Boolean(4 &amp; parseInt(((stats &amp;&amp; stats.mode) &amp; 0x1ff).toString(8)[0], 10));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 var filterPath = function(entry) {
-  if (entry.stat &#x26;&#x26; entry.stat.isSymbolicLink()) return filterDir(entry);
+  if (entry.stat &amp;&amp; entry.stat.isSymbolicLink()) return filterDir(entry);
   var resolvedPath = entryPath(entry);
-  return (!hasGlob || globFilter(resolvedPath)) &#x26;&#x26;
-    this._isntIgnored(resolvedPath, entry.stat) &#x26;&#x26;
+  return (!hasGlob || globFilter(resolvedPath)) &amp;&amp;
+    this._isntIgnored(resolvedPath, entry.stat) &amp;&amp;
     (this.options.ignorePermissionErrors ||
       this.<span class="apidocCodeKeywordSpan">_hasReadPermissions</span>(entry.stat));
 }.bind(this);
@@ -1512,22 +1505,22 @@ var getDirParts = function(path) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_isIgnored = function (path, stats) {
-  if (this.options.atomic &#x26;&#x26; dotRe.test(path)) return true;
+  if (this.options.atomic &amp;&amp; dotRe.test(path)) return true;
 
   if (!this._userIgnored) {
     var cwd = this.options.cwd;
     var ignored = this.options.ignored;
-    if (cwd &#x26;&#x26; ignored) {
+    if (cwd &amp;&amp; ignored) {
       ignored = ignored.map(function (path) {
-        if (typeof path !== &#x27;string&#x27;) return path;
+        if (typeof path !== 'string') return path;
         return isAbsolute(path) ? path : sysPath.join(cwd, path);
       });
     }
     var paths = arrify(ignored)
       .filter(function(path) {
-        return typeof path === &#x27;string&#x27; &#x26;&#x26; !isGlob(path);
+        return typeof path === 'string' &amp;&amp; !isGlob(path);
       }).map(function(path) {
-        return path + &#x27;/**&#x27;;
+        return path + '/**';
       });
     this._userIgnored = anymatch(
       this._globIgnored.concat(ignored).concat(paths)
@@ -1549,7 +1542,7 @@ this._isntIgnored = function(path, stat) {
 
 var readyCalls = 0;
 this._emitReady = function() {
-  if (++readyCalls &#x3e;= this._readyCount) {
+  if (++readyCalls &gt;= this._readyCount) {
     this._emitReady = Function.prototype;
     this._readyEmitted = true;
 ...</pre></li>
@@ -1565,7 +1558,7 @@ this._emitReady = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_remove = function (directory, item) {
-  // if what is being deleted is a directory, get that directory&#x27;s paths
+  // if what is being deleted is a directory, get that directory's paths
   // for recursive deleting and cleaning of watched object
   // if it is not a directory, nestedDirectoryChildren will be empty array
   var path = sysPath.join(directory, item);
@@ -1574,11 +1567,11 @@ this._emitReady = function() {
 
   // prevent duplicate handling in case of arriving here nearly simultaneously
   // via multiple paths (such as _handleFile and _handleDir)
-  if (!this._throttle(&#x27;remove&#x27;, path, 100)) return;
+  if (!this._throttle('remove', path, 100)) return;
 
   // if the only watched file is removed, watch for its return
   var watchedDirs = Object.keys(this._watched);
-  if (!isDirectory &#x26;&#x26; !this.options.useFsEvents &#x26;&#x26; watchedDirs.length === 1) {
+  if (!isDirectory &amp;&amp; !this.options.useFsEvents &amp;&amp; watchedDirs.length === 1) {
     this.add(directory, item, true);
   }
 
@@ -1599,17 +1592,17 @@ this._emitReady = function() {
   // If we wait for this file to be fully written, cancel the wait.
   var relPath = path;
   if (this.options.cwd) relPath = sysPath.relative(this.options.cwd, path);
-  if (this.options.awaitWriteFinish &#x26;&#x26; this._pendingWrites[relPath]) {
+  if (this.options.awaitWriteFinish &amp;&amp; this._pendingWrites[relPath]) {
     var event = this._pendingWrites[relPath].cancelWait();
-    if (event === &#x27;add&#x27;) return;
+    if (event === 'add') return;
   }
 
   // The Entry will either be a directory that just got removed
   // or a bogus entry to a file, in either case we have to remove it
   delete this._watched[path];
   delete this._watched[fullPath];
-  var eventName = isDirectory ? &#x27;unlinkDir&#x27; : &#x27;unlink&#x27;;
-  if (wasTracked &#x26;&#x26; !this._isIgnored(path)) this._emit(eventName, path);
+  var eventName = isDirectory ? 'unlinkDir' : 'unlink';
+  if (wasTracked &amp;&amp; !this._isIgnored(path)) this._emit(eventName, path);
 
   // Avoid conflicts if we later create another file with the same name
   if (!this.options.useFsEvents) {
@@ -1664,13 +1657,13 @@ parent.remove(item);
   return this;
 }
 
-if (event === &#x27;change&#x27;) {
-  if (!this.<span class="apidocCodeKeywordSpan">_throttle</span>(&#x27;change&#x27;, path, 50)) return this;
+if (event === 'change') {
+  if (!this.<span class="apidocCodeKeywordSpan">_throttle</span>('change', path, 50)) return this;
 }
 
 if (
-  this.options.alwaysStat &#x26;&#x26; val1 === undefined &#x26;&#x26;
-  (event === &#x27;add&#x27; || event === &#x27;addDir&#x27; || event === &#x27;change&#x27;)
+  this.options.alwaysStat &amp;&amp; val1 === undefined &amp;&amp;
+  (event === 'add' || event === 'addDir' || event === 'change')
 ) {
   var fullPath = this.options.cwd ? sysPath.join(this.options.cwd, path) : path;
 ...</pre></li>
@@ -1696,17 +1689,17 @@ if (
 
   var closer;
   if (this.options.usePolling) {
-    options.interval = this.enableBinaryInterval &#x26;&#x26; isBinaryPath(basename) ?
+    options.interval = this.enableBinaryInterval &amp;&amp; isBinaryPath(basename) ?
       this.options.binaryInterval : this.options.interval;
     closer = setFsWatchFileListener(path, absolutePath, options, {
       listener: listener,
-      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+      rawEmitter: this.emit.bind(this, 'raw')
     });
   } else {
     closer = setFsWatchListener(path, absolutePath, options, {
       listener: listener,
       errHandler: this._handleError.bind(this),
-      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+      rawEmitter: this.emit.bind(this, 'raw')
     });
   }
   return closer;
@@ -1720,8 +1713,8 @@ if (parent.has(basename)) return callback();
 
 // kick off the watcher
 var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(file, function(path, newStats) {
-  if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
-  if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+  if (!this._throttle('watch', file, 5)) return;
+  if (!newStats || newStats &amp;&amp; newStats.mtime.getTime() === 0) {
     fs.stat(file, function(error, newStats) {
       // Fix issues where mtime is null but file is still present
       if (error) {
@@ -1745,14 +1738,14 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
   paths = flatten(arrify(paths));
 
   if (!paths.every(isString)) {
-    throw new TypeError(&#x27;Non-string provided as watch path: &#x27; + paths);
+    throw new TypeError('Non-string provided as watch path: ' + paths);
   }
 
   if (cwd) paths = paths.map(function(path) {
     if (isAbsolute(path)) {
       return path;
-    } else if (path[0] === &#x27;!&#x27;) {
-      return &#x27;!&#x27; + sysPath.join(cwd, path.substring(1));
+    } else if (path[0] === '!') {
+      return '!' + sysPath.join(cwd, path.substring(1));
     } else {
       return sysPath.join(cwd, path);
     }
@@ -1760,12 +1753,12 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
 
   // set aside negated glob strings
   paths = paths.filter(function(path) {
-    if (path[0] === &#x27;!&#x27;) {
+    if (path[0] === '!') {
       this._ignoredPaths[path.substring(1)] = true;
     } else {
       // if a path is being added that was previously ignored, stop ignoring it
       delete this._ignoredPaths[path];
-      delete this._ignoredPaths[path + &#x27;/**&#x27;];
+      delete this._ignoredPaths[path + '/**'];
 
       // reset the cached userIgnored anymatch fn
       // to make ignoredPaths changes effective
@@ -1775,7 +1768,7 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
     }
   }, this);
 
-  if (this.options.useFsEvents &#x26;&#x26; FsEventsHandler.canUse()) {
+  if (this.options.useFsEvents &amp;&amp; FsEventsHandler.canUse()) {
     if (!this._readyCount) this._readyCount = paths.length;
     if (this.options.persistent) this._readyCount *= 2;
     paths.forEach(this._addToFsEvents, this);
@@ -1801,8 +1794,8 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
 * Fix some `cwd` option behavior on Windows
 * `awaitWriteFinish` and `cwd` are now compatible
 * Fix some race conditions.
-* #379: Recreating deleted directory doesn&#x27;t trigger event
-* When adding a previously-deleted file, emit &#x27;add&#x27;, not &#x27;change&#x27;
+* #379: Recreating deleted directory doesn't trigger event
+* When adding a previously-deleted file, emit 'add', not 'change'
 
 # Chokidar 1.2.0 (Oct 1, 2015)
 * Allow nested arrays of paths to be provided to `.watch()` and `.<span class="apidocCodeKeywordSpan">add</span>()`
@@ -1870,7 +1863,7 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
   var watchList = {};
   Object.keys(this._watched).forEach(function(dir) {
     var key = this.options.cwd ? sysPath.relative(this.options.cwd, dir) : dir;
-    watchList[key || &#x27;.&#x27;] = Object.keys(this._watched[dir]._items).sort();
+    watchList[key || '.'] = Object.keys(this._watched[dir]._items).sort();
   }.bind(this));
   return watchList;
 }</pre></li>
@@ -1908,7 +1901,7 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
 
   paths.forEach(function(path) {
     // convert to absolute path unless relative path already matches
-    if (!isAbsolute(path) &#x26;&#x26; !this._closers[path]) {
+    if (!isAbsolute(path) &amp;&amp; !this._closers[path]) {
       if (this.options.cwd) path = sysPath.join(this.options.cwd, path);
       path = sysPath.resolve(path);
     }
@@ -1917,7 +1910,7 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
 
     this._ignoredPaths[path] = true;
     if (path in this._watched) {
-      this._ignoredPaths[path + &#x27;/**&#x27;] = true;
+      this._ignoredPaths[path + '/**'] = true;
     }
 
     // reset the cached userIgnored anymatch fn
@@ -1942,7 +1935,7 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
 * Fix some `cwd` option behavior on Windows
 * `awaitWriteFinish` and `cwd` are now compatible
 * Fix some race conditions.
-* #379: Recreating deleted directory doesn&#x27;t trigger event
+* #379: Recreating deleted directory doesn't trigger event
 ...</pre></li>
     </ul>
 
@@ -1974,22 +1967,22 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function canUse() {
-  return fsevents &#x26;&#x26; Object.keys(FSEventsWatchers).length &#x3c; 128;
+  return fsevents &amp;&amp; Object.keys(FSEventsWatchers).length &lt; 128;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+if (undef('binaryInterval')) opts.binaryInterval = 300;
 this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
 
-// Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
-if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+// Enable fsevents on OS X when polling isn't explicitly enabled.
+if (undef('useFsEvents')) opts.useFsEvents = !opts.usePolling;
 
-// If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+// If we can't use fsevents, ensure the options reflect it's disabled.
 if (!FsEventsHandler.<span class="apidocCodeKeywordSpan">canUse</span>()) opts.useFsEvents = false;
 
 // Use polling on Mac if not using fsevents.
 // Other platforms use non-polling fs.watch.
-if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
-  opts.usePolling = process.platform === &#x27;darwin&#x27;;
+if (undef('usePolling') &amp;&amp; !opts.useFsEvents) {
+  opts.usePolling = process.platform === 'darwin';
 }
 ...</pre></li>
     </ul>
@@ -2011,7 +2004,7 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
     <li>description and source-code<pre class="apidocCodePre">_addToFsEvents = function (path, transform, forceAdd, priorDepth) {
 
   // applies transform if provided, otherwise returns same value
-  var processPath = typeof transform === &#x27;function&#x27; ?
+  var processPath = typeof transform === 'function' ?
     transform : function(val) { return val; };
 
   var emitAdd = function(newPath, stats) {
@@ -2027,13 +2020,13 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
     dirObj.add(base);
 
     if (!this.options.ignoreInitial || forceAdd === true) {
-      this._emit(isDir ? &#x27;addDir&#x27; : &#x27;add&#x27;, pp, stats);
+      this._emit(isDir ? 'addDir' : 'add', pp, stats);
     }
   }.bind(this);
 
   var wh = this._getWatchHelpers(path);
 
-  // evaluate what is at the path we&#x27;re being asked to watch
+  // evaluate what is at the path we're being asked to watch
   fs[wh.statMethod](wh.watchPath, function(error, stats) {
     if (this._handleError(error) || this._isIgnored(wh.watchPath, stats)) {
       this._emitReady();
@@ -2044,26 +2037,26 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
       // emit addDir unless this is a glob parent
       if (!wh.globFilter) emitAdd(processPath(path), stats);
 
-      // don&#x27;t recurse further if it would exceed depth setting
-      if (priorDepth &#x26;&#x26; priorDepth &#x3e; this.options.depth) return;
+      // don't recurse further if it would exceed depth setting
+      if (priorDepth &amp;&amp; priorDepth &gt; this.options.depth) return;
 
       // scan the contents of the dir
       readdirp({
         root: wh.watchPath,
-        entryType: &#x27;all&#x27;,
+        entryType: 'all',
         fileFilter: wh.filterPath,
         directoryFilter: wh.filterDir,
         lstat: true,
         depth: this.options.depth - (priorDepth || 0)
-      }).on(&#x27;data&#x27;, function(entry) {
+      }).on('data', function(entry) {
         // need to check filterPath on dirs b/c filterDir is less restrictive
-        if (entry.stat.isDirectory() &#x26;&#x26; !wh.filterPath(entry)) return;
+        if (entry.stat.isDirectory() &amp;&amp; !wh.filterPath(entry)) return;
 
         var joinedPath = sysPath.join(wh.watchPath, entry.path);
         var fullPath = entry.fullPath;
 
-        if (wh.followSymlinks &#x26;&#x26; entry.stat.isSymbolicLink()) {
-          // preserve the current depth here since it can&#x27;t be derived from
+        if (wh.followSymlinks &amp;&amp; entry.stat.isSymbolicLink()) {
+          // preserve the current depth here since it can't be derived from
           // real paths past the symlink
           var curDepth = this.options.depth === undefined ?
             undefined : depth(joinedPath, sysPath.resolve(wh.watchPath)) + 1;
@@ -2072,16 +2065,16 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
         } else {
           emitAdd(joinedPath, entry.stat);
         }
-      }.bind(this)).on(&#x27;error&#x27;, function() {
+      }.bind(this)).on('error', function() {
         // Ignore readdirp errors
-      }).on(&#x27;end&#x27;, this._emitReady);
+      }).on('end', this._emitReady);
     } else {
       emitAdd(wh.watchPath, stats);
       this._emitReady();
     }
   }.bind(this));
 
-  if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
+  if (this.options.persistent &amp;&amp; forceAdd !== true) {
     var initWatch = function(error, realPath) {
       var closer = this._watchWithFsEvents(
         wh.watchPath,
@@ -2092,7 +2085,7 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
       if (closer) this._closers[path] = closer;
     }.bind(this);
 
-    if (typeof transform === &#x27;function&#x27;) {
+    if (typeof transform === 'function') {
       // realpath has already been resolved
       initWatch();
     } else {
@@ -2102,9 +2095,9 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   // track new directories
-  if (info.type === &#x27;directory&#x27;) this._getWatchedDir(path);
+  if (info.type === 'directory') this._getWatchedDir(path);
 
-  if (info.type === &#x27;symlink&#x27; &#x26;&#x26; this.options.followSymlinks) {
+  if (info.type === 'symlink' &amp;&amp; this.options.followSymlinks) {
     // push symlinks back to the top of the stack to get handled
     var curDepth = this.options.depth === undefined ?
       undefined : depth(fullPath, realPath) + 1;
@@ -2115,7 +2108,7 @@ if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
     this._getWatchedDir(parent).add(item);
   }
 }
-var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : event;
+var eventName = info.type === 'directory' ? event + 'Dir' : event;
 ...</pre></li>
     </ul>
 
@@ -2129,7 +2122,7 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_handleFsEventsSymlink = function (linkPath, fullPath, transform, curDepth) {
-  // don&#x27;t follow the same symlink more than once
+  // don't follow the same symlink more than once
   if (this._symlinkPaths[fullPath]) return;
   else this._symlinkPaths[fullPath] = true;
 
@@ -2143,11 +2136,11 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
     this._readyCount++;
 
     // add the linkTarget for watching with a wrapper for transform
-    // that causes emitted paths to incorporate the link&#x27;s path
+    // that causes emitted paths to incorporate the link's path
     this._addToFsEvents(linkTarget || linkPath, function(path) {
-      var dotSlash = &#x27;.&#x27; + sysPath.sep;
+      var dotSlash = '.' + sysPath.sep;
       var aliasedPath = linkPath;
-      if (linkTarget &#x26;&#x26; linkTarget !== dotSlash) {
+      if (linkTarget &amp;&amp; linkTarget !== dotSlash) {
         aliasedPath = path.replace(linkTarget, linkPath);
       } else if (path !== dotSlash) {
         aliasedPath = sysPath.join(linkPath, path);
@@ -2158,8 +2151,8 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-    if (wh.followSymlinks &#x26;&#x26; entry.stat.isSymbolicLink()) {
-      // preserve the current depth here since it can&#x27;t be derived from
+    if (wh.followSymlinks &amp;&amp; entry.stat.isSymbolicLink()) {
+      // preserve the current depth here since it can't be derived from
       // real paths past the symlink
       var curDepth = this.options.depth === undefined ?
         undefined : depth(joinedPath, sysPath.resolve(wh.watchPath)) + 1;
@@ -2168,9 +2161,9 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
     } else {
       emitAdd(joinedPath, entry.stat);
     }
-  }.bind(this)).on(&#x27;error&#x27;, function() {
+  }.bind(this)).on('error', function() {
     // Ignore readdirp errors
-  }).on(&#x27;end&#x27;, this._emitReady);
+  }).on('end', this._emitReady);
 } else {
 ...</pre></li>
     </ul>
@@ -2188,46 +2181,46 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
   if (this._isIgnored(watchPath)) return;
   var watchCallback = function(fullPath, flags, info) {
     if (
-      this.options.depth !== undefined &#x26;&#x26;
-      depth(fullPath, realPath) &#x3e; this.options.depth
+      this.options.depth !== undefined &amp;&amp;
+      depth(fullPath, realPath) &gt; this.options.depth
     ) return;
     var path = transform(sysPath.join(
       watchPath, sysPath.relative(watchPath, fullPath)
     ));
-    if (globFilter &#x26;&#x26; !globFilter(path)) return;
+    if (globFilter &amp;&amp; !globFilter(path)) return;
     // ensure directories are tracked
     var parent = sysPath.dirname(path);
     var item = sysPath.basename(path);
     var watchedDir = this._getWatchedDir(
-      info.type === &#x27;directory&#x27; ? path : parent
+      info.type === 'directory' ? path : parent
     );
     var checkIgnored = function(stats) {
       if (this._isIgnored(path, stats)) {
         this._ignoredPaths[path] = true;
-        if (stats &#x26;&#x26; stats.isDirectory()) {
-          this._ignoredPaths[path + &#x27;/**/*&#x27;] = true;
+        if (stats &amp;&amp; stats.isDirectory()) {
+          this._ignoredPaths[path + '/**/*'] = true;
         }
         return true;
       } else {
         delete this._ignoredPaths[path];
-        delete this._ignoredPaths[path + &#x27;/**/*&#x27;];
+        delete this._ignoredPaths[path + '/**/*'];
       }
     }.bind(this);
 
     var handleEvent = function(event) {
       if (checkIgnored()) return;
 
-      if (event === &#x27;unlink&#x27;) {
+      if (event === 'unlink') {
         // suppress unlink events on never before seen files
-        if (info.type === &#x27;directory&#x27; || watchedDir.has(item)) {
+        if (info.type === 'directory' || watchedDir.has(item)) {
           this._remove(parent, item);
         }
       } else {
-        if (event === &#x27;add&#x27;) {
+        if (event === 'add') {
           // track new directories
-          if (info.type === &#x27;directory&#x27;) this._getWatchedDir(path);
+          if (info.type === 'directory') this._getWatchedDir(path);
 
-          if (info.type === &#x27;symlink&#x27; &#x26;&#x26; this.options.followSymlinks) {
+          if (info.type === 'symlink' &amp;&amp; this.options.followSymlinks) {
             // push symlinks back to the top of the stack to get handled
             var curDepth = this.options.depth === undefined ?
               undefined : depth(fullPath, realPath) + 1;
@@ -2238,42 +2231,42 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
             this._getWatchedDir(parent).add(item);
           }
         }
-        var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : event;
+        var eventName = info.type === 'directory' ? event + 'Dir' : event;
         this._emit(eventName, path);
-        if (eventName === &#x27;addDir&#x27;) this._addToFsEvents(path, false, true);
+        if (eventName === 'addDir') this._addToFsEvents(path, false, true);
       }
     }.bind(this);
 
     function addOrChange() {
-      handleEvent(watchedDir.has(item) ? &#x27;change&#x27; : &#x27;add&#x27;);
+      handleEvent(watchedDir.has(item) ? 'change' : 'add');
     }
     function checkFd() {
-      fs.open(path, &#x27;r&#x27;, function(error, fd) {
+      fs.open(path, 'r', function(error, fd) {
         if (fd) fs.close(fd);
-        error &#x26;&#x26; error.code !== &#x27;EACCES&#x27; ?
-          handleEvent(&#x27;unlink&#x27;) : addOrChange();
+        error &amp;&amp; error.code !== 'EACCES' ?
+          handleEvent('unlink') : addOrChange();
       });
     }
     // correct for wrong events emitted
     var wrongEventFlags = [
       69888, 70400, 71424, 72704, 73472, 131328, 131840, 262912
     ];
-    if (wrongEventFlags.indexOf(flags) !== -1 || info.event === &#x27;unknown&#x27;) {
-      if (typeof this.options.ignored === &#x27;function&#x27;) {
+    if (wrongEventFlags.indexOf(flags) !== -1 || info.event === 'unknown') {
+      if (typeof this.options.ignored === 'function') {
         fs.stat(path, function(error, stats) {
           if (checkIgnored(stats)) return;
-          stats ? addOrChange() : handleEvent(&#x27;unlink&#x27;);
+          stats ? addOrChange() : handleEvent('unlink');
         });
       } else {
         checkFd();
       }
     } else {
       switch (info.event) {
-      case &#x27;created&#x27;:
-      case &#x27;modified&#x27;:
+      case 'created':
+      case 'modified':
         return addOrChange();
-      case &#x27;deleted&#x27;:
-      case &#x27;moved&#x27;:
+      case 'deleted':
+      case 'moved':
         return checkFd();
       }
     }
@@ -2283,7 +2276,7 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
     watchPath,
     realPath,
     watchCallback,
-    this.emit.bind(this, &#x27;raw&#x27;)
+    this.emit.bind(this, 'raw')
   );
 
   this._emitReady();
@@ -2295,7 +2288,7 @@ var eventName = info.type === &#x27;directory&#x27; ? event + &#x27;Dir&#x27; : 
   }
 }.bind(this));
 
-if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
+if (this.options.persistent &amp;&amp; forceAdd !== true) {
   var initWatch = function(error, realPath) {
     var closer = this.<span class="apidocCodeKeywordSpan">_watchWithFsEvents</span>(
       wh.watchPath,
@@ -2330,7 +2323,7 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
   this._watched = Object.create(null);
   this._closers = Object.create(null);
   this._ignoredPaths = Object.create(null);
-  Object.defineProperty(this, &#x27;_globIgnored&#x27;, {
+  Object.defineProperty(this, '_globIgnored', {
     get: function() { return Object.keys(this._ignoredPaths); }
   });
   this.closed = false;
@@ -2342,23 +2335,23 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
   }
 
   // Set up default options.
-  if (undef(&#x27;persistent&#x27;)) opts.persistent = true;
-  if (undef(&#x27;ignoreInitial&#x27;)) opts.ignoreInitial = false;
-  if (undef(&#x27;ignorePermissionErrors&#x27;)) opts.ignorePermissionErrors = false;
-  if (undef(&#x27;interval&#x27;)) opts.interval = 100;
-  if (undef(&#x27;binaryInterval&#x27;)) opts.binaryInterval = 300;
+  if (undef('persistent')) opts.persistent = true;
+  if (undef('ignoreInitial')) opts.ignoreInitial = false;
+  if (undef('ignorePermissionErrors')) opts.ignorePermissionErrors = false;
+  if (undef('interval')) opts.interval = 100;
+  if (undef('binaryInterval')) opts.binaryInterval = 300;
   this.enableBinaryInterval = opts.binaryInterval !== opts.interval;
 
-  // Enable fsevents on OS X when polling isn&#x27;t explicitly enabled.
-  if (undef(&#x27;useFsEvents&#x27;)) opts.useFsEvents = !opts.usePolling;
+  // Enable fsevents on OS X when polling isn't explicitly enabled.
+  if (undef('useFsEvents')) opts.useFsEvents = !opts.usePolling;
 
-  // If we can&#x27;t use fsevents, ensure the options reflect it&#x27;s disabled.
+  // If we can't use fsevents, ensure the options reflect it's disabled.
   if (!FsEventsHandler.canUse()) opts.useFsEvents = false;
 
   // Use polling on Mac if not using fsevents.
   // Other platforms use non-polling fs.watch.
-  if (undef(&#x27;usePolling&#x27;) &#x26;&#x26; !opts.useFsEvents) {
-    opts.usePolling = process.platform === &#x27;darwin&#x27;;
+  if (undef('usePolling') &amp;&amp; !opts.useFsEvents) {
+    opts.usePolling = process.platform === 'darwin';
   }
 
   // Global override (useful for end-developers that need to force polling for all
@@ -2367,9 +2360,9 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
   if (envPoll !== undefined) {
     var envLower = envPoll.toLowerCase();
 
-    if (envLower === &#x27;false&#x27; || envLower === &#x27;0&#x27;) {
+    if (envLower === 'false' || envLower === '0') {
       opts.usePolling = false;
-    } else if (envLower === &#x27;true&#x27; || envLower === &#x27;1&#x27;) {
+    } else if (envLower === 'true' || envLower === '1') {
       opts.usePolling = true;
     } else {
       opts.usePolling = !!envLower
@@ -2377,12 +2370,12 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
   }
 
   // Editor atomic write normalization enabled by default with fs.watch
-  if (undef(&#x27;atomic&#x27;)) opts.atomic = !opts.usePolling &#x26;&#x26; !opts.useFsEvents;
+  if (undef('atomic')) opts.atomic = !opts.usePolling &amp;&amp; !opts.useFsEvents;
   if (opts.atomic) this._pendingUnlinks = Object.create(null);
 
-  if (undef(&#x27;followSymlinks&#x27;)) opts.followSymlinks = true;
+  if (undef('followSymlinks')) opts.followSymlinks = true;
 
-  if (undef(&#x27;awaitWriteFinish&#x27;)) opts.awaitWriteFinish = false;
+  if (undef('awaitWriteFinish')) opts.awaitWriteFinish = false;
   if (opts.awaitWriteFinish === true) opts.awaitWriteFinish = {};
   var awf = opts.awaitWriteFinish;
   if (awf) {
@@ -2399,17 +2392,17 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
 
   var readyCalls = 0;
   this._emitReady = function() {
-    if (++readyCalls &#x3e;= this._readyCount) {
+    if (++readyCalls &gt;= this._readyCount) {
       this._emitReady = Function.prototype;
       this._readyEmitted = true;
       // use process.nextTick to allow time for listener to be bound
-      process.nextTick(this.emit.bind(this, &#x27;ready&#x27;));
+      process.nextTick(this.emit.bind(this, 'ready'));
     }
   }.bind(this);
 
   this.options = opts;
 
-  // You’re frozen when your heart’s not open.
+  // Youâ€™re frozen when your heartâ€™s not open.
   Object.freeze(opts);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2431,8 +2424,8 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
 * Fix some `cwd` option behavior on Windows
 * `awaitWriteFinish` and `cwd` are now compatible
 * Fix some race conditions.
-* #379: Recreating deleted directory doesn&#x27;t trigger event
-* When adding a previously-deleted file, emit &#x27;add&#x27;, not &#x27;change&#x27;
+* #379: Recreating deleted directory doesn't trigger event
+* When adding a previously-deleted file, emit 'add', not 'change'
 
 # Chokidar 1.2.0 (Oct 1, 2015)
 * Allow nested arrays of paths to be provided to `.<span class="apidocCodeKeywordSpan">watch</span>()` and `.add()`
@@ -2487,14 +2480,14 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
   }
 
   var wh = this._getWatchHelpers(path, depth);
-  if (!wh.hasGlob &#x26;&#x26; priorWh) {
+  if (!wh.hasGlob &amp;&amp; priorWh) {
     wh.hasGlob = priorWh.hasGlob;
     wh.globFilter = priorWh.globFilter;
     wh.filterPath = priorWh.filterPath;
     wh.filterDir = priorWh.filterDir;
   }
 
-  // evaluate what is at the path we&#x27;re being asked to watch
+  // evaluate what is at the path we're being asked to watch
   fs[wh.statMethod](wh.watchPath, function(error, stats) {
     if (this._handleError(error)) return callback(null, path);
     if (this._isIgnored(wh.watchPath, stats)) {
@@ -2512,10 +2505,10 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
     } else if (stats.isSymbolicLink()) {
       var parent = sysPath.dirname(wh.watchPath);
       this._getWatchedDir(parent).add(wh.watchPath);
-      this._emit(&#x27;add&#x27;, wh.watchPath, stats);
+      this._emit('add', wh.watchPath, stats);
       closer = initDir(parent, path);
 
-      // preserve this symlink&#x27;s target path
+      // preserve this symlink's target path
       fs.realpath(path, function(error, targetPath) {
         this._symlinkPaths[sysPath.resolve(path)] = targetPath;
         ready();
@@ -2559,8 +2552,8 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
     <li>description and source-code<pre class="apidocCodePre">_handleDir = function (dir, stats, initialAdd, depth, target, wh, callback) {
   var parentDir = this._getWatchedDir(sysPath.dirname(dir));
   var tracked = parentDir.has(sysPath.basename(dir));
-  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial) &#x26;&#x26; !target &#x26;&#x26; !tracked) {
-    if (!wh.hasGlob || wh.globFilter(dir)) this._emit(&#x27;addDir&#x27;, dir, stats);
+  if (!(initialAdd &amp;&amp; this.options.ignoreInitial) &amp;&amp; !target &amp;&amp; !tracked) {
+    if (!wh.hasGlob || wh.globFilter(dir)) this._emit('addDir', dir, stats);
   }
 
   // ensure dir is tracked (harmless if redundant)
@@ -2569,10 +2562,10 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
 
   var read = function(directory, initialAdd, done) {
     // Normalize the directory name on Windows
-    directory = sysPath.join(directory, &#x27;&#x27;);
+    directory = sysPath.join(directory, '');
 
     if (!wh.hasGlob) {
-      var throttler = this._throttle(&#x27;readdir&#x27;, directory, 1000);
+      var throttler = this._throttle('readdir', directory, 1000);
       if (!throttler) return;
     }
 
@@ -2581,23 +2574,23 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
 
     readdirp({
       root: directory,
-      entryType: &#x27;all&#x27;,
+      entryType: 'all',
       fileFilter: wh.filterPath,
       directoryFilter: wh.filterDir,
       depth: 0,
       lstat: true
-    }).on(&#x27;data&#x27;, function(entry) {
+    }).on('data', function(entry) {
       var item = entry.path;
       var path = sysPath.join(directory, item);
       current.push(item);
 
-      if (entry.stat.isSymbolicLink() &#x26;&#x26;
+      if (entry.stat.isSymbolicLink() &amp;&amp;
         this._handleSymlink(entry, directory, path, item)) return;
 
       // Files that present in current directory snapshot
       // but absent in previous are added to watch list and
       // emit `add` event.
-      if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+      if (item === target || !target &amp;&amp; !previous.has(item)) {
         this._readyCount++;
 
         // ensure relativeness of path is preserved in case of watcher reuse
@@ -2605,7 +2598,7 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
 
         this._addToNodeFs(path, initialAdd, wh, depth + 1);
       }
-    }.bind(this)).on(&#x27;end&#x27;, function() {
+    }.bind(this)).on('end', function() {
       if (throttler) throttler.clear();
       if (done) done();
 
@@ -2613,27 +2606,27 @@ if (this.options.persistent &#x26;&#x26; forceAdd !== true) {
       // but present in previous emit `remove` event
       // and are removed from @watched[directory].
       previous.children().filter(function(item) {
-        return item !== directory &#x26;&#x26;
-          current.indexOf(item) === -1 &#x26;&#x26;
+        return item !== directory &amp;&amp;
+          current.indexOf(item) === -1 &amp;&amp;
           // in case of intersecting globs;
           // a path may have been filtered out of this readdir, but
-          // shouldn&#x27;t be removed because it matches a different glob
+          // shouldn't be removed because it matches a different glob
           (!wh.hasGlob || wh.filterPath({
             fullPath: sysPath.resolve(directory, item)
           }));
       }).forEach(function(item) {
         this._remove(directory, item);
       }, this);
-    }.bind(this)).on(&#x27;error&#x27;, this._handleError.bind(this));
+    }.bind(this)).on('error', this._handleError.bind(this));
   }.bind(this);
 
   var closer;
 
-  if (this.options.depth == null || depth &#x3c;= this.options.depth) {
+  if (this.options.depth == null || depth &lt;= this.options.depth) {
     if (!target) read(dir, initialAdd, callback);
     closer = this._watchWithNodeFs(dir, function(dirPath, stats) {
       // if current directory is removed, do nothing
-      if (stats &#x26;&#x26; stats.mtime.getTime() === 0) return;
+      if (stats &amp;&amp; stats.mtime.getTime() === 0) return;
 
       read(dirPath, false);
     });
@@ -2680,26 +2673,26 @@ if (stats.isDirectory()) {
 
   // kick off the watcher
   var closer = this._watchWithNodeFs(file, function(path, newStats) {
-    if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
-    if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+    if (!this._throttle('watch', file, 5)) return;
+    if (!newStats || newStats &amp;&amp; newStats.mtime.getTime() === 0) {
       fs.stat(file, function(error, newStats) {
         // Fix issues where mtime is null but file is still present
         if (error) {
           this._remove(dirname, basename);
         } else {
-          this._emit(&#x27;change&#x27;, file, newStats);
+          this._emit('change', file, newStats);
         }
       }.bind(this));
     // add is about to be emitted if file not already tracked in parent
     } else if (parent.has(basename)) {
-      this._emit(&#x27;change&#x27;, file, newStats);
+      this._emit('change', file, newStats);
     }
   }.bind(this));
 
-  // emit an add event if we&#x27;re supposed to
-  if (!(initialAdd &#x26;&#x26; this.options.ignoreInitial)) {
-    if (!this._throttle(&#x27;add&#x27;, file, 0)) return;
-    this._emit(&#x27;add&#x27;, file, stats);
+  // emit an add event if we're supposed to
+  if (!(initialAdd &amp;&amp; this.options.ignoreInitial)) {
+    if (!this._throttle('add', file, 0)) return;
+    this._emit('add', file, stats);
   }
 
   if (callback) callback();
@@ -2707,7 +2700,7 @@ if (stats.isDirectory()) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-      // preserve this symlink&#x27;s target path
+      // preserve this symlink's target path
       fs.realpath(path, function(error, targetPath) {
         this._symlinkPaths[sysPath.resolve(path)] = targetPath;
         ready();
@@ -2737,42 +2730,42 @@ if (stats.isDirectory()) {
   var dir = this._getWatchedDir(directory);
 
   if (!this.options.followSymlinks) {
-    // watch symlink directly (don&#x27;t follow) and detect changes
+    // watch symlink directly (don't follow) and detect changes
     this._readyCount++;
     fs.realpath(path, function(error, linkPath) {
       if (dir.has(item)) {
         if (this._symlinkPaths[full] !== linkPath) {
           this._symlinkPaths[full] = linkPath;
-          this._emit(&#x27;change&#x27;, path, entry.stat);
+          this._emit('change', path, entry.stat);
         }
       } else {
         dir.add(item);
         this._symlinkPaths[full] = linkPath;
-        this._emit(&#x27;add&#x27;, path, entry.stat);
+        this._emit('add', path, entry.stat);
       }
       this._emitReady();
     }.bind(this));
     return true;
   }
 
-  // don&#x27;t follow the same symlink more than once
+  // don't follow the same symlink more than once
   if (this._symlinkPaths[full]) return true;
   else this._symlinkPaths[full] = true;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 lstat: true
-    }).on(&#x27;data&#x27;, function(entry) {
+    }).on('data', function(entry) {
 var item = entry.path;
 var path = sysPath.join(directory, item);
 current.push(item);
 
-if (entry.stat.isSymbolicLink() &#x26;&#x26;
+if (entry.stat.isSymbolicLink() &amp;&amp;
   this.<span class="apidocCodeKeywordSpan">_handleSymlink</span>(entry, directory, path, item)) return;
 
 // Files that present in current directory snapshot
 // but absent in previous are added to watch list and
 // emit `add` event.
-if (item === target || !target &#x26;&#x26; !previous.has(item)) {
+if (item === target || !target &amp;&amp; !previous.has(item)) {
   this._readyCount++;
 ...</pre></li>
     </ul>
@@ -2797,17 +2790,17 @@ if (item === target || !target &#x26;&#x26; !previous.has(item)) {
 
   var closer;
   if (this.options.usePolling) {
-    options.interval = this.enableBinaryInterval &#x26;&#x26; isBinaryPath(basename) ?
+    options.interval = this.enableBinaryInterval &amp;&amp; isBinaryPath(basename) ?
       this.options.binaryInterval : this.options.interval;
     closer = setFsWatchFileListener(path, absolutePath, options, {
       listener: listener,
-      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+      rawEmitter: this.emit.bind(this, 'raw')
     });
   } else {
     closer = setFsWatchListener(path, absolutePath, options, {
       listener: listener,
       errHandler: this._handleError.bind(this),
-      rawEmitter: this.emit.bind(this, &#x27;raw&#x27;)
+      rawEmitter: this.emit.bind(this, 'raw')
     });
   }
   return closer;
@@ -2821,8 +2814,8 @@ if (parent.has(basename)) return callback();
 
 // kick off the watcher
 var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(file, function(path, newStats) {
-  if (!this._throttle(&#x27;watch&#x27;, file, 5)) return;
-  if (!newStats || newStats &#x26;&#x26; newStats.mtime.getTime() === 0) {
+  if (!this._throttle('watch', file, 5)) return;
+  if (!newStats || newStats &amp;&amp; newStats.mtime.getTime() === 0) {
     fs.stat(file, function(error, newStats) {
       // Fix issues where mtime is null but file is still present
       if (error) {
@@ -2840,3 +2833,4 @@ var closer = this.<span class="apidocCodeKeywordSpan">_watchWithNodeFs</span>(fi
     ]
 </div>
 </div>
+</body></html>
